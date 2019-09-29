@@ -1,0 +1,65 @@
+<h4 class="sidebar-summary">Bag</h4>
+
+<div class="inventory-details">
+    <div class="form-group">
+        <label>Capacity</label>
+        {{#if isGM}}
+        <input type="text" name="flags.itemcollection.capacity.value" value="{{flags.itemcollection.capacity.value}}" data-dtype="{{flags.itemcollection.capacity.type}}"/>
+        {{else}}
+        {{flags.itemcollection.capacity.value}}
+        {{/if}}
+    </div>
+
+    <div class="form-group">
+        <label>Weight</label>
+    {{#if isGM}}
+        <input type="text" name="data.weight.value" value="{{data.weight.value}}" data-dtype="{{data.weight.type}}"/>
+    {{else}}
+        {{data.weight.value}}
+    {{/if}}
+    </div>
+
+    <div class="form-group">
+            <label>Item Wt</label> {{flags.itemcollection.itemWeight.value}}
+    </div>
+
+    <div class="form-group">
+        <label>GP Value</label> {{flags.itemcollection.goldValue.value}}
+    </div>
+
+    <div class="form-group">
+        <label>Price</label>
+        <input type="text" name="data.price.value" value="{{data.price.value}}" data-dtype="{{data.price.type}}"/>
+    </div>
+
+    {{#if canUnEquip}}
+        {{#if isEquipped}}
+            <div class="form-group">
+                <a class="bag-equipped" title="Unequip Bag"><i class="fas fa-minus"></i> Unequip</a>
+            </div>
+        {{else}}
+            <div class="form-group">
+                <a class="bag-equipped" title="Equip Bag"><i class="fas fa-plus"></i> Equip</a>
+            </div>
+        {{/if}}
+    {{/if}}
+    {{#if isGM}}
+    <div class="form-group">
+        <label>Fixed Weight</label>
+        <input type="checkbox" name="flags.itemcollection.fixedWeight.value" value="1" data-dtype="{{flags.itemcollection.fixedWeight.type}}" {{checked flags.itemcollection.fixedWeight.value}}/>
+    </div>
+    {{/if}}
+
+
+    <div class="form-group">
+    <a class="item-compact-all" title="Compact All"><i class="fas fa-asterisk"></i>   Compact</a>
+    </div>
+
+    <div class="form-group">
+        <a class="item-control item-import-all" title="Import All"><i class="fas fa-plus"></i>  Import</a>
+    </div>
+    <div class="form-group">
+        <label>Spells?</label>
+        <input type="checkbox" name="flags.itemcollection.importSpells.value" value="1" data-dtype="{{flags.itemcollection.importSpells.type}}" {{checked flags.itemcollection.importSpells.value}}/>
+    </div>
+</div>

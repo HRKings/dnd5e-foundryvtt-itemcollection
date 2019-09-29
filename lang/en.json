@@ -1,0 +1,6 @@
+{
+    "itemcollection.goldConversion.Name": "Gold Conversion",
+    "itemcollection.goldConversion.Hint": "Allow Players to conver pack contents to gold",
+    "itemcollection.goldConversionPercentage.Name": "Gold Conversion Percentage",
+    "itemcollection.goldConversionPercentage.Hint": "What percentage of the gold value players get when doing a gold converison"
+}

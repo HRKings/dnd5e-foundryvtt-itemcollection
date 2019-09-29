@@ -1,0 +1,137 @@
+
+.itemcollection .inventory-list {
+	list-style: none;
+	margin: 0;
+	padding-top: 5px;
+	height: 100%;
+	overflow-y: auto;
+	/* Inventory Item */
+	/* Inventory Header */
+}
+
+.itemcollection .inventory-list .item {
+	line-height: 24px;
+	padding: 0;
+	border-bottom: 1px solid #CCC;
+	/* Item Dropdown Summary */
+  }
+.itemcollection .inventory-list .item .item-name {
+	cursor: pointer;
+  }
+.itemcollection .inventory-list .item .item-name .item-image {
+	flex: 0 0 24px;
+	margin-right: 6px;
+	background-size: 24px;
+	background-repeat: no-repeat;
+  }
+.itemcollection .inventory-list .item .item-name h4 {
+	flex: 2;
+	margin: 0;
+  }
+.itemcollection .inventory-list .item .item-name .prepared {
+	color: #666;
+	margin-left: 3px;
+	font-size: 10px;
+  }
+.itemcollection .inventory-list .item .item-name .item-charges {
+	color: #666;
+	font-size: 12px;
+	flex: 0;
+  }
+
+.itemcollection .inventory-list .item .item-quantity,
+.itemcollection .inventory-list .item .item-weight {
+	flex: 0 0 32px;
+	font-size: 12px;
+	color: #666;
+	text-align: center;
+	border-right: 1px solid #CCC;
+  }
+ .itemcollection .inventory-list .inventory-header .item-controls a.item-export-all {
+	width: 100%;
+  }
+.itemcollection .inventory-list .inventory-list .item-controls a.item-delete {
+	width: 100%;
+  }
+
+.itemcollection .inventory-list .item .item-controls {
+	flex: 0 0 64px;
+  }
+.itemcollection .inventory-list .item .item-controls a {
+	display: block;
+	float: left;
+	width: 16px;
+	font-size: 10px;
+	text-align: center;
+	color: #666;
+  }
+  .itemcollecton .inventory-list .item .item-summary {
+	flex: 0 0 100%;
+	font-size: 12px;
+	line-height: 16px;
+	padding: 0.25em 0.5em;
+	border-top: 1px solid #CCC;
+	flex-direction: column;
+  }
+  .itemcollection .inventory-list .inventory-header {
+	font-weight: 700;
+	line-height: 20px;
+	background: rgba(0, 0, 0, 0.05);
+  }
+  .itemcollection .inventory-list .inventory-header h3 {
+	flex: 2;
+	font-size: 1em;
+	margin: 0;
+	padding-left: 32px;
+	font-weight: bold;
+  }
+  .itemcollection .inventory-list .inventory-header .item-quantity,
+  .itemcollection .inventory-list .inventory-header .item-weight {
+	color: #111;
+  }
+  .itemcollection .inventory-list .inventory-header .item-controls a {
+	width: 100%;
+  }
+  .itemcollection .currency {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #CCC;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	height: 22px;
+	font-size: 12px;
+	line-height: 18px;
+  }
+  .itemcollection .currency > * {
+	flex: 1;
+  }
+  .itemcollection .currency li.denomination {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	padding: 3px 3px 0;
+	justify-content: flex-end;
+	border-right: none;
+  }
+  .itemcollection .currency li.denomination > * {
+	flex: 1;
+  }
+  .itemcollection .currency li.denomination label {
+	flex: none;
+	margin-right: 3px;
+  }
+  .itemcollection .currency li.denomination input {
+	text-align: right;
+	max-width: 48px;
+	height: 20px;
+	font-size: 12px;
+	line-height: 18px;
+	border: none;
+  }
+  .itemcollection .currency li.denomination:last-child {
+	border-right: none;
+  }

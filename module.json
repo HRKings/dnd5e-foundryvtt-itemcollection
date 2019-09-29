@@ -1,0 +1,34 @@
+{
+    "name": "itemcollection",
+    "title": "Item Containers",
+    "description": "Items that can hold other items - think backpack, sack or bag of holding",
+    "version": "0.0.1",
+    "author": "tposney",
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+    ],
+    "systems": ["dnd5e"],
+    "scripts": [
+        "app/settings.js",
+        "lib/lib.js",
+        "app/main/main.js"
+    ],
+    "styles": ["css/styles.css"],
+    "packs": [    {
+        "name": "premadebags",
+        "label": "Premade Bags",
+        "system": "dnd5e",
+        "path": "./packs/premade.db",
+        "module": "world",
+        "entity": "Item"
+      }
+    ],
+    "url": "https://gitlab.com/tposney/itemcollection/tree/master",
+    "manifest": "",
+    "download": ""
+  }
+
