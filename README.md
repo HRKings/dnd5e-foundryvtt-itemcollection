@@ -18,7 +18,7 @@ Bags are backpack items so can go anywhere a backpack item can, inventory, compe
 - Items in bags can be compacted - did you find 20 different sets of armour in you treasure pile? Use the compact function to convert them to one line of 20 sets of armour. If you over compact items in a bag there is a split operation to separate them.![Item Compactor Before](images\Item Compactor Before.png)![Item Compactor After](images\Item Compactor After.png)
 - The GM can create a world entity party loot item (which is a bag) and drOP treasure or treasure bags If the player characters have owner permission to the party loot item they can drag and drop to/from it to take the things they want. They can also compact/split/convert to gold items in the party loot item. If they have observer permission they can see what is in it but not drag/drop etc. 
 - The * next to the Dungeoneer's pack below  indicates it is a bag and pressing on it will pull items out of the pack into the party loot inventory list. You can leave them as loot parcels as well.
-- ![Party Loot](images/Party Loot.png)
+- ![Party Loot](images/party Loot.png)
 - Player characters caN be given a copy of the "Item Compactor" (a zero capacity non-unequip-able item) that will let them manage their inventory without hiding their total item weight.
 - A per client module option allows you to have items in bags sorted. This allows you to import your inventory/spellbook and export it again to have a sorted ivnentory/spellbook.
 - Due to my ineptitude ONLY bags ownd by Actors or unowned can be editied. So a token that are not linked to a characters cannot an owned bag's contents changed. To change such a bag drag it to the items directory, change it there and drag back to the NPC.
