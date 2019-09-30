@@ -19,10 +19,10 @@
     ],
     "styles": ["css/styles.css"],
     "packs": [    {
-        "name": "premadebags",
+        "name": "packs",
         "label": "Premade Bags",
         "system": "dnd5e",
-        "path": "./packs/premade.db",
+        "path": "./packs/packs.db",
         "module": "world",
         "entity": "Item"
       }

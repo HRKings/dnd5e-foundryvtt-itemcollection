@@ -52,14 +52,18 @@ var ItemCollectionTemplate = (function() {
         scope: "world",
         default: true,
         type: Boolean
-      },
-      {
+      }, {
         name: "goldConversionPercentage",
         scope: "world",
         default: 50,
         type: Number
-      }
-    ]
+      },{
+        name: "sortBagContents",
+        scope: "module",
+        default: true,
+        type: Boolean
+    }
+  ]
   };
 
   return {
