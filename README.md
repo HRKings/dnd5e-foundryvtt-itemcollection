@@ -6,19 +6,19 @@ Main features:
 
 Bags are backpack items so can go anywhere a backpack item can, inventory, compendium, world items and hold other items.
 
-- ![Character Sheet](images\Character Sheet.png) 
+- ![Character Sheet](images/Character Sheet.png) 
 - Bags can contain other items (including spells and bags). These can be imported and exported to your character's inventory by drag and drop or export/import commands.
 
 - Bags have a capacity indicating how much they can hold. A capacity of 0 means infinite. This can only be set by the GM. If you try and drop an item that is too heavy for the bag the drop will fail and add it to your inventory instead.
 - Bags can report a fixed weight in your inventory, think bag of holding (capacity 500, fixed weight 15) or a mule (fixed weight 0, capacity 690). 
 - Bags can be unequipped by players or GM, so that their reported weight drops to 0 in your inventory (only bags with a capacity other than 0 can be unequipped). Bags with a fixed weight of 0 are unaffected by equipping/unequipping  the bag.
-- ![Multi Bags](images\Multi Bags.png)
+- ![Multi Bags](images/Multi Bags.png)
 - You can create bags of standard equipment, e.g. adventurer's pack which can be dragged onto a character and imported into the inventory. The module ships with a sample compendium of a few bags that you might find useful. Since bags allow you to manipulate the apparent weight of you inventory I suggest that only the GM create these and then drop them into the players inventory. 
 - At the GM's discretion (.e.g. module setting) items in bags can be converted to gold at a certain percentage of their value (another setting). The GM can choose to enable this when the party gets to a town to let them easily sell off accumulated loot.
 - Bags can hold any item, including spells, classes and features so that you can create spellbooks, e.g. cleric life domain spells that can be dragged onto your character sheet and imported, class starter packs with class, feats, spells and equipment. Also items in bags are sorted so that importing and exporting all spells will create a nicely sorted spell list.
 - Items in bags can be compacted - did you find 20 different sets of armour in you treasure pile? Use the compact function to convert them to one line of 20 sets of armour. If you over compact items in a bag there is a split operation to separate them.![Item Compactor Before](images\Item Compactor Before.png)![Item Compactor After](images\Item Compactor After.png)
 - The GM can create a world entity party loot item (which is a bag) and drag treasure or treasure bags (which can be attached to npcs - for token only NPCs, i.e. no linked sheet there is a bug that means you should only drag/drop loots parcels from/onto the token and not edit them once dropped) as a default monster treasure. If the player characters have owner permission to the party loot item they can drag and drop to/from it to take the things they want. They can also compact/split/convert to gold items in the party loot item. If they have observer permission they can see what is in it but not drag/drop etc. The * next to the Dungeoneer's pack below  indicates it is a bag and pressing on it will pull items out of the pack into the party loot inventory list. You can leave them as loot parcels as well.
-- ![Party Loot](images\Party Loot.png)
+- ![Party Loot](images/Party Loot.png)
 - It is suggested that  every player character be given a copy of the "Item Compactor", a zero capacity non-unequip-able  item that will let them manager their inventory without hiding their total item weight.
 
 ### Notes
@@ -44,7 +44,7 @@ To install a module, follow these instructions:
 
 Once you have a bag (or drag one from the pre-created ones) the gm will see something like this
 
-![All Options - GM view](images\All Options - GM view.png)
+![All Options - GM view](images/All Options - GM view.png)
 
 The -ALL button exports all items back to the players inventory (if the bag is in a players inventory) and nothing otherwise. The -All and - single actions DO NOT WORK for tokens not lined to an actor.
 
@@ -66,7 +66,7 @@ The players view is slightly different: They cannot set the capacity of the bag,
 
 The $ sign converts the item to GP at the module configured setting percentage. The dollar sign only appears if the module setting is enabled. The players view below is slightly different as some functions are disabled, notably setting capacity and fixed weight. Also, in the example below unequip is disabled since the bag has a capacity of 0.
 
-![All Options Player view](images\All Options Player view.png)
+![All Options Player view](images/All Options Player view.png)
 
 
 
