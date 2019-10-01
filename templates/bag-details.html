@@ -17,8 +17,10 @@
                 <span class="item-quantity">Qty.</span>
                 <span class="item-weight">Wt.</span>
                 <div class="item-controls">
-                    <a class="item-control item-export-all" title="Export All Items" data-type="{{sid}}"><i
-                            class="fas fa-minus"></i> All</a>
+                    {{#if isOwned}}
+                        <a class="item-control item-export-all" title="Export All Items" data-type="{{sid}}"><i
+                                class="fas fa-minus"></i> All</a>
+                    {{/if}}
                 </div>
             </li>
             {{#each flags.itemcollection.contents as |item iid|}}
@@ -34,7 +36,9 @@
                     {{#if item.flags.itemcollection}}
                     <a class="item-control item-export" title="Import Item"><i class="fas fa-asterisk"></i></a>
                     {{else}}
-                    <a class="item-control item-export" title="Import Item"><i class="fas fa-minus"></i></a>
+                    {{#if ../isOwned}}
+                        <a class="item-control item-export" title="Import Item"><i class="fas fa-minus"></i></a>
+                    {{/if}}
                     <a class="item-control item-split" title="Split Tiem"><i class="fas fa-columns"></i></a>
                     {{#if ../canConvertToGold}} <a class="item-control item-convertToGold" title="Convert To Gold"><i
                             class="fas fa-dollar-sign"></i></a> {{/if}}

@@ -54,12 +54,13 @@
     <div class="form-group">
     <a class="item-compact-all" title="Compact All"><i class="fas fa-asterisk"></i>   Compact</a>
     </div>
-
-    <div class="form-group">
-        <a class="item-control item-import-all" title="Import All"><i class="fas fa-plus"></i>  Import</a>
-    </div>
-    <div class="form-group">
-        <label>Spells?</label>
-        <input type="checkbox" name="flags.itemcollection.importSpells.value" value="1" data-dtype="{{flags.itemcollection.importSpells.type}}" {{checked flags.itemcollection.importSpells.value}}/>
-    </div>
+    {{#if isOwned}}
+        <div class="form-group">
+            <a class="item-control item-import-all" title="Import All"><i class="fas fa-plus"></i>  Import</a>
+        </div>
+        <div class="form-group">
+            <label>Spells?</label>
+            <input type="checkbox" name="flags.itemcollection.importSpells.value" value="1" data-dtype="{{flags.itemcollection.importSpells.type}}" {{checked flags.itemcollection.importSpells.value}}/>
+        </div>
+    {{/if}}
 </div>
