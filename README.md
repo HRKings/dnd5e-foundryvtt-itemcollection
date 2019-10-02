@@ -47,7 +47,7 @@ To install a module, follow these instructions:
 4. Since this module includes a compendium of items the first time you run foundry will complain and not let you open the compendium. Simply restart foundry a second time and all should be good.
 5. To create a bag from scratch, simple create any backpack item then set its iemsheet to be ItemSheet5eWithBags and all the necessary data will be created. I very strongly recommend that you **ONLY** do this for items you want to have as bags since once added the data is there forever.
 
-Once you have a bag (or drag one from the pre-created ones) the gm will see something like this
+Once you have a bag (or drag one from the pre-created ones) the gm will see something like this. Players will only see the options available to them.
 
 ![All Options - GM view](images/All Options - GM view.png)
 
@@ -76,7 +76,7 @@ The $ sign converts the item to GP at the module configured setting percentage. 
 
 ### Creating a bag
 
-Create an item and change it's character sheet to ItemSheet5eWithBags. 
+Create an item and change it's character sheet to ItemSheet5eWithBags. The edit the item.
 
 **DO NOT SET THE DEFAULT SHEET** to ItemSheet5eWithBags or every backpack item you edit/create will be a bag.
 
@@ -87,11 +87,15 @@ Create an item and change it's character sheet to ItemSheet5eWithBags.
 
 ### Bugs
 
-Bags in tokens cannot be edited. Only dragged/dropped/viewed.
+Bags in tokens cannot be edited.
 
 Editing of items in bags is not supported.
 
 The mod is not very chatty about refusing to accept dropped items, there are a few error messages displayed on the user screen.
+
+Item import/export is quite slow for inventories of many items. This is a side effect of having to await each add/delete from the inventory and my ineptitude at working out how to do it faster.
+
+
 
 ### Feedback
 
