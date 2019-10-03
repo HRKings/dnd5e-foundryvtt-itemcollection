@@ -10,10 +10,10 @@ Bags are backpack items so can go anywhere a backpack item can, inventory, compe
 - Bags can contain any "items" (including spells, feats and other bags). Items can be added to a bag via drag and drop or the import button (which brings in the entire inventory). Items can be removed from a bag via drag and drop to a character inventory, bag, item directory or compendium according to permissions. Items can be exported to you inventory via buttons on the bag sheet.
 - Bags have a capacity indicating how much they can hold. A capacity of 0 means infinite. This can only be set by the GM. If you try and drop an from a bag or character inventory into a bag that is too heavy for the bag it will be added to your inventory instead.
 - Bags can be set to a fixed weight (as used in the encumberance calculation), think bag of holding (capacity 500, fixed weight 15) or a mule (fixed weight 0, capacity 690). 
-- Bags can be unequipped by players or GM, so that their reported weight drops to 0 in your inventory (only bags with a capacity other than 0 can be unequipped). Bags with a fixed weight of 0 are unaffected by equipping/unequipping  the bag.
+- Bags can be unequipped by players or GM, so that their reported weight drops to 0 in your inventory (only bags with a capacity other than 0 can be unequipped). Bags with a fixed weight unaffected by equipping/unequipping the bag.
 - ![Multi Bags](images/Multi Bags.png)
 - You can create bags of standard equipment, e.g. adventurer's pack which can be dragged onto a character and imported into the inventory. The module ships with a sample compendium of a few bags that you might find useful.
-- At the GM's discretion (.e.g. module setting - could be turned on when they are back in town) items in bags can be converted to gold at a certain percentage of their value (another setting). The GM can choose to enable this when the party gets to a town to let them easily sell off accumulated loot.
+- At the GM's discretion (.e.g. module setting) items in bags can be converted to gold at a certain percentage of their value (another setting). The GM can choose to enable this when the party gets to a town to let them easily sell off accumulated loot.
 - Bags can hold any item, including spells, classes and features so that you can create spellbooks, e.g. cleric 1st level spells that can be dragged onto a character imported, also class starter packs with class, feats, spells and equipment.
 - Items in bags can be compacted - did you find 20 different sets of armour in you treasure pile? Use the compact function to convert them to one line of 20 sets of armour. If you over compact items in a bag there is a split operation to separate them.![Item Compactor Before](images\Item Compactor Before.png)![Item Compactor After](images\Item Compactor After.png)
 - The GM can create a world entity party loot item (which is a bag) and drOP treasure or treasure bags If the player characters have owner permission to the party loot item they can drag and drop to/from it to take the things they want. They can also compact/split/convert to gold items in the party loot item. If they have observer permission they can see what is in it but not drag/drop etc. 
@@ -41,7 +41,7 @@ If worrying about encumbrance is not your idea of fun, just give players a capac
 
 To install a module, follow these instructions:
 
-1. [Download the zip](https://gitlab.com/tposney/itemcollection/blob/master/itemcollection.zip) file included in the module directory. 
+1. [Download the zip](https://gitlab.com/tposney/itemcollection/blob/master/itemcollection.zip) file included in the module directory, or paste the url for the module.json into the install maodule option.
 2. Extract the included folder to `public/modules` in your Foundry Virtual Tabletop installation folder.
 3. Restart Foundry Virtual Tabletop.  
 4. Since this module includes a compendium of items the first time you run foundry will complain and not let you open the compendium. Simply restart foundry a second time and all should be good.
