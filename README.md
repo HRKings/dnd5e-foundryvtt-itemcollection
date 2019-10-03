@@ -44,7 +44,8 @@ To install a module, follow these instructions:
 2. Extract the included folder to `public/modules` in your Foundry Virtual Tabletop installation folder.
 3. Restart Foundry Virtual Tabletop.  
 4. Since this module includes a compendium of items the first time you run foundry will complain and not let you open the compendium. Simply restart foundry a second time and all should be good.
-5. To create a bag from scratch, simple create any backpack item then set its iemsheet to be ItemSheet5eWithBags and all the necessary data will be created. I very strongly recommend that you **ONLY** do this for items you want to have as bags since once added the data is there forever.
+5. To create a bag from scratch, simple create any backpack item then set its iemsheet to be ItemSheet5eWithBags and all the necessary data will be created. I very strongly recommend that you **ONLY** do this for items you want to have as bags since once added the data is there forever. 
+6. **DO NOT** SET THE DEFAULT BACKPACK SHEET TO ItemSheet5eWithBags. If you do the world will explode and terrbie plagues will be brought down on us all. Actually it just means each backpack item you create will also be a bag.
 
 Or use this URL to install via the module isntallation menu in Foundry: https://dl.dropboxusercontent.com/s/bdh5pgpdcgkzkem/module.json
 Once you have a bag (or drag one from the pre-created ones) the gm will see something like this. Players will only see the options available to them.
