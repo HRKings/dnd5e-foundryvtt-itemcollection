@@ -10,7 +10,7 @@ Bags are backpack items so can go anywhere a backpack item can, inventory, compe
 - Bags can contain any "items" (including spells, feats and other bags). Items can be added to a bag via drag and drop or the import button (which brings in the entire inventory). Items can be removed from a bag via drag and drop to a character inventory, bag, item directory or compendium according to permissions. Items can be exported to you inventory via buttons on the bag sheet.
 - Bags have a capacity indicating how much they can hold. A capacity of 0 means infinite. This can only be set by the GM. If you try and drop an from a bag or character inventory into a bag that is too heavy for the bag it will be added to your inventory instead.
 - Bags can be set to a fixed weight (as used in the encumberance calculation), think bag of holding (capacity 500, fixed weight 15) or a mule (fixed weight 0, capacity 690). 
-- Bags can be unequipped by players or GM, so that their reported weight drops to 0 in your inventory (only bags with a capacity other than 0 can be unequipped). Bags with a fixed weight unaffected by equipping/unequipping the bag.
+- Bags can be unequipped by players or GM, so that their reported weight drops to 0 in your inventory (only bags with a capacity other than 0 can be unequipped).
 - ![Multi Bags](images/Multi Bags.png)
 - You can create bags of standard equipment, e.g. adventurer's pack which can be dragged onto a character and imported into the inventory. The module ships with a sample compendium of a few bags that you might find useful.
 - At the GM's discretion (.e.g. module setting) items in bags can be converted to gold at a certain percentage of their value (another setting). The GM can choose to enable this when the party gets to a town to let them easily sell off accumulated loot.
@@ -59,9 +59,9 @@ The -Unequip button will unequip the item from your inventory (setting its weigh
 
 The *Compact button compacts all items into a single line with the correct quantity. For spells, there is no quantity, so this acts as deduplicate. Since the list is always sorted you can use this to tidy up your spell book. 
 
-The +Import brings all items in you inventory into the bag (excepting the bag itself). If the Spells? checkbox is selected then spells will be imported instead. This will only import inventory items, or if spells is ticked all spells from your spellbook. To add other items to a bag you must drop them in.
+The +Import brings all items in you inventory into the bag (excepting the bag itself and other bags). If the Spells? checkbox is selected then spells will be imported instead. This will only import inventory items, or if spells is ticked all spells from your spellbook. To add other items to a bag you must drop them in.
 
-Normally the weight of the bag updates as you add/delete items (currency weight is included according to the game setting). A GM can set the item to Fixed Weight you can enter a weight in the weight field which is what will be shown in the inventory/encumberance. It is not a good idea to give players a fixed weight item with capacity 0 (unlimited) since this allows them to keep as much equipment as they like.
+Normally the weight of the bag updates as you add/delete items (currency weight is included according to the game setting). A GM can set the item to Fixed Weight and enter a weight in the adjacent weight field which is what will be shown in the inventory/encumberance. It is not a good idea to give players a fixed weight item with capacity 0 (unlimited) since this allows them to keep as much equipment as they like.
 
 Items can be dragged into or out of the bag. Be careful when dragging out of the bag since the item is immediately removed from the bag when you start the drag. If you change your mind make sure to drop the item back into the bag or it will disappear.
 
@@ -95,6 +95,7 @@ The mod is not very chatty about refusing to accept dropped items, there are a f
 
 Item import/export is quite slow for inventories of many items. This is a side effect of having to await each add/delete from the inventory and my ineptitude at working out how to do it faster.
 
+There is a bug that setting an item to fixed weight is not immediately reflected in the total weight.
 
 
 ### Feedback
