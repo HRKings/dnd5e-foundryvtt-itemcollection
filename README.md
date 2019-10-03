@@ -83,7 +83,8 @@ Create an item and change it's character sheet to ItemSheet5eWithBags. Then edit
 
 - This is an **alpha** release and whilst I have done quite a bit of testing it is quite possible that something will go wrong and trash your items. I **strongly** suggest you try this out in a test world first and make sure you can do what you want. I also strongly suggest you make a backup of you world directory before you start playing.
 - I will investigate making items editable for the next release but it may require a substantial change to the code.
-- There are two modules flags that are set at world level, can convert items to gold and what percentage of the value is added to the bag when conversion is done.
+- There are two modules flags that are set at world level, can you convert items to gold and what percentage of the value is added to the bag when conversion is done. These are world flags so can only be set by the GM.
+- There is a sort bag contents flag as well, which is settable by each user. Items are sorted by type (weapon, spell etc), then name. Spells are also sorted by level.
 - As a GM when creating packs for characters set the capacity to 0 until you have everything in the bag, then set the capacity to either whatever their starter pack would be (i.e. 30 for a normal backpack) or a small value, such as 0.1 which means they can take things out of the starter pack but not put things back in, effectively an extract only pack.
 
 ### Bugs
