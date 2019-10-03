@@ -95,8 +95,9 @@ The mod is not very chatty about refusing to accept dropped items, there are a f
 
 Item import/export is quite slow for inventories of many items. This is a side effect of having to await each add/delete from the inventory and my ineptitude at working out how to do it faster.
 
-There is a bug that setting an item to fixed weight is not immediately reflected in the total weight.
+There is a bug that setting an item to fixed weight is not immediately reflected in the total weight. Simply unequip/equip to update.
 
+Because there are many item create/deletes when importing/exporting the actors table gets updated much more often. This can make the system a little slow when the actors table gets very full.
 
 ### Feedback
 
