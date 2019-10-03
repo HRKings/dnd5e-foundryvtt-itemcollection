@@ -1,3 +1,3 @@
 cd ..
-zip -r itemcollection.zip itemcollection -x \*.git\* -x itemcollection.zip
+zip -r itemcollection.zip itemcollection -x \*.git/* -x itemcollection/images/*  -x itemcollection/itemcollection.zip
 
