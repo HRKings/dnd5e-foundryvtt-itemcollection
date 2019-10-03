@@ -1,10 +1,8 @@
-# Item Collections for Foundry VTT
-
 This module provides Items that are capable of holding other items; e.g. bags.
 
-Main features:
+### Main features:
 
-Bags are backpack items so can go anywhere a backpack item can, inventory, compendium, world items and hold other items.
+Bags are backpack items (so can go anywhere a backpack item can, inventory, compendium, world items) and hold other items.
 
 - ![Character Sheet](images/Character Sheet.png) 
 - Bags can contain any "items" (including spells, feats and other bags). Items can be added to a bag via drag and drop or the import button (which brings in the entire inventory). Items can be removed from a bag via drag and drop to a character inventory, bag, item directory or compendium according to permissions. Items can be exported to you inventory via buttons on the bag sheet.
@@ -16,20 +14,21 @@ Bags are backpack items so can go anywhere a backpack item can, inventory, compe
 - At the GM's discretion (.e.g. module setting) items in bags can be converted to gold at a certain percentage of their value (another setting). The GM can choose to enable this when the party gets to a town to let them easily sell off accumulated loot.
 - Bags can hold any item, including spells, classes and features so that you can create spellbooks, e.g. cleric 1st level spells that can be dragged onto a character imported, also class starter packs with class, feats, spells and equipment.
 - Items in bags can be compacted - did you find 20 different sets of armour in you treasure pile? Use the compact function to convert them to one line of 20 sets of armour. If you over compact items in a bag there is a split operation to separate them.![Item Compactor Before](images\Item Compactor Before.png)![Item Compactor After](images\Item Compactor After.png)
-- The GM can create a world entity party loot item (which is a bag) and drOP treasure or treasure bags If the player characters have owner permission to the party loot item they can drag and drop to/from it to take the things they want. They can also compact/split/convert to gold items in the party loot item. If they have observer permission they can see what is in it but not drag/drop etc. 
+- The GM can create a world entity party loot item (which is a bag) and drop treasure or treasure bags If the player characters have owner permission to the party loot item they can drag and drop to/from it to take the things they want. They can also compact/split/convert to gold items in the party loot item. If they have observer permission they can see what is in it but not drag/drop etc. 
 - The * next to the Dungeoneer's pack below  indicates it is a bag and pressing on it will pull items out of the pack into the party loot inventory list. You can leave them as loot parcels as well.
 - ![Party Loot](images/party Loot.png)
-- Player characters caN be given a copy of the "Item Compactor" (a zero capacity non-unequip-able item) that will let them manage their inventory without hiding their total item weight.
+- Player characters can be given a copy of the "Item Compactor" (a zero capacity non-unequip-able item) that will let them manage their inventory without hiding their total item weight.
 - A per client module option allows you to have items in bags sorted. This allows you to import your inventory/spellbook and export it again to have a sorted ivnentory/spellbook.
-- Due to my ineptitude ONLY bags ownd by Actors or unowned can be editied. So a token that are not linked to a characters cannot an owned bag's contents changed. To change such a bag drag it to the items directory, change it there and drag back to the NPC.
-- 
+- Due to my ineptitude ONLY bags ownd by Actors or unowned can be editied. To change such a bag drag it to the items directory, change it there and drag back to the token.
+- Items dragged from a characters inventory and dropped into a bag are deleted from the characters inventory, so that character only has a single copy of the item.
+
 
 ### Notes
 - The UI is pretty rough at the moment, it will be improved.
 
 - Items in bags CANNOT be edited, only imported/exported/dragged/dropped/expanded or converted to gold. You must move the item into your inventory to edit it.
 
- - Bags in Unlinked tokens can only be dragged or dropped not editied.
+- Bags in unlinked tokens can only be dragged or dropped not editied. (If you try to edit you will see READ ONLY in the item name).
 
 - When you drag an item from a bag it is **immediately** deleted from the bag. If you drop it somewhere that cannot receive it, it will **disappear** from the game. This means that dragging/dropping from bags does not create new items in the game. A better programmer would work out how to delete the item only on drop.
 
@@ -45,8 +44,10 @@ To install a module, follow these instructions:
 2. Extract the included folder to `public/modules` in your Foundry Virtual Tabletop installation folder.
 3. Restart Foundry Virtual Tabletop.  
 4. Since this module includes a compendium of items the first time you run foundry will complain and not let you open the compendium. Simply restart foundry a second time and all should be good.
-5. To create a bag from scratch, simple create any backpack item then set its iemsheet to be ItemSheet5eWithBags and all the necessary data will be created. I very strongly recommend that you **ONLY** do this for items you want to have as bags since once added the data is there forever.
+5. To create a bag from scratch, simple create any backpack item then set its iemsheet to be ItemSheet5eWithBags and all the necessary data will be created. I very strongly recommend that you **ONLY** do this for items you want to have as bags since once added the data is there forever. 
+6. **DO NOT** SET THE DEFAULT BACKPACK SHEET TO ItemSheet5eWithBags. If you do the world will explode and terrbie plagues will be brought down on us all. Actually it just means each backpack item you create will also be a bag.
 
+Or use this URL to install via the module isntallation menu in Foundry: https://dl.dropboxusercontent.com/s/bdh5pgpdcgkzkem/module.json
 Once you have a bag (or drag one from the pre-created ones) the gm will see something like this. Players will only see the options available to them.
 
 ![All Options - GM view](images/All Options - GM view.png)
@@ -76,13 +77,14 @@ The $ sign converts the item to GP at the module configured setting percentage. 
 
 ### Creating a bag
 
-Create an item and change it's character sheet to ItemSheet5eWithBags. The edit the item.
+Create an item and change it's character sheet to ItemSheet5eWithBags. Then edit the item.
 
-**DO NOT SET THE DEFAULT SHEET** to ItemSheet5eWithBags or every backpack item you edit/create will be a bag.
+**DO NOT SET THE DEFAULT SHEET** to ItemSheet5eWithBags or every backpack item you edit/create will be a bag. If you do create an item as a bag by mistake, change the item sheet back to the default. The item will still be treated as a bag for import/export but otherwise should be fine.
 
 - This is an **alpha** release and whilst I have done quite a bit of testing it is quite possible that something will go wrong and trash your items. I **strongly** suggest you try this out in a test world first and make sure you can do what you want. I also strongly suggest you make a backup of you world directory before you start playing.
 - I will investigate making items editable for the next release but it may require a substantial change to the code.
-- There are two modules flags that are set at world level, can convert items to gold and what percentage of the value is added to the bag when conversion is done.
+- There are two modules flags that are set at world level, can you convert items to gold and what percentage of the value is added to the bag when conversion is done. These are world flags so can only be set by the GM.
+- There is a sort bag contents flag as well, which is settable by each user. Items are sorted by type (weapon, spell etc), then name. Spells are also sorted by level.
 - As a GM when creating packs for characters set the capacity to 0 until you have everything in the bag, then set the capacity to either whatever their starter pack would be (i.e. 30 for a normal backpack) or a small value, such as 0.1 which means they can take things out of the starter pack but not put things back in, effectively an extract only pack.
 
 ### Bugs
@@ -95,8 +97,9 @@ The mod is not very chatty about refusing to accept dropped items, there are a f
 
 Item import/export is quite slow for inventories of many items. This is a side effect of having to await each add/delete from the inventory and my ineptitude at working out how to do it faster.
 
-There is a bug that setting an item to fixed weight is not immediately reflected in the total weight.
+There is a bug that setting an item to fixed weight is not immediately reflected in the total weight. Simply unequip/equip to update.
 
+Because there are many item create/deletes when importing/exporting the actors table gets updated much more often. This can make the system a little slow when the actors table gets very full.
 
 ### Feedback
 
