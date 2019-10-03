@@ -79,7 +79,7 @@ The $ sign converts the item to GP at the module configured setting percentage. 
 
 Create an item and change it's character sheet to ItemSheet5eWithBags. Then edit the item.
 
-**DO NOT SET THE DEFAULT SHEET** to ItemSheet5eWithBags or every backpack item you edit/create will be a bag. If you do create an item as a bag by mistake, change the character sheet back to the default. The item will still be treated as a bag for import/export but otherwise should be fine.
+**DO NOT SET THE DEFAULT SHEET** to ItemSheet5eWithBags or every backpack item you edit/create will be a bag. If you do create an item as a bag by mistake, change the item sheet back to the default. The item will still be treated as a bag for import/export but otherwise should be fine.
 
 - This is an **alpha** release and whilst I have done quite a bit of testing it is quite possible that something will go wrong and trash your items. I **strongly** suggest you try this out in a test world first and make sure you can do what you want. I also strongly suggest you make a backup of you world directory before you start playing.
 - I will investigate making items editable for the next release but it may require a substantial change to the code.
