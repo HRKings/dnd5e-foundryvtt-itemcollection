@@ -95,11 +95,11 @@ Editing of items in bags is not supported.
 
 The mod is not very chatty about refusing to accept dropped items, there are a few error messages displayed on the user screen.
 
-Item import/export is quite slow for inventories of many items. This is a side effect of having to await each add/delete from the inventory and my ineptitude at working out how to do it faster.
+Item export is quite slow for inventories of many items. This is a side effect of having to await each add from the inventory and my ineptitude at working out how to do it faster.
 
 There is a bug that setting an item to fixed weight is not immediately reflected in the total weight. Simply unequip/equip to update.
 
-Because there are many item create/deletes when importing/exporting the actors table gets updated much more often. This can make the system a little slow when the actors table gets very full.
+Because there are many item create when exporting the actors table gets updated much more often. This can make the system a little slow when the actors table gets very full. Importing does not suffer have the same problem.
 
 ### Feedback
 
