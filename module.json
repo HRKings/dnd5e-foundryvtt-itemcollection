@@ -2,7 +2,7 @@
     "name": "itemcollection",
     "title": "Item Containers",
     "description": "Items that can hold other items - think backpack, sack or bag of holding",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "author": "tposney",
     "languages": [
         {

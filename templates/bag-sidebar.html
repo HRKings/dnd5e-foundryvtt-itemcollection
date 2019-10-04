@@ -1,6 +1,6 @@
 <h4 class="sidebar-summary">Bag</h4>
 
-<div class="inventory-details">
+<div class="inventory-details itemcollection">
     <div class="form-group">
         <label>Capacity</label>
         {{#if isGM}}
@@ -36,11 +36,11 @@
     {{#if canUnEquip}}
         {{#if isEquipped}}
             <div class="form-group">
-                <a class="bag-equipped" title="Unequip Bag"><i class="fas fa-minus"></i> Unequip</a>
+                <button class="bag-equipped item-button" title="Unequip Bag"><i class="fas fa-minus"></i> Unequip</button>
             </div>
         {{else}}
             <div class="form-group">
-                <a class="bag-equipped" title="Equip Bag"><i class="fas fa-plus"></i> Equip</a>
+                <button class="bag-equipped item-button" title="Equip Bag"><i class="fas fa-plus"></i> Equip
             </div>
         {{/if}}
     {{/if}}
@@ -48,11 +48,11 @@
 
 
     <div class="form-group">
-    <a class="item-compact-all" title="Compact All"><i class="fas fa-asterisk"></i>   Compact</a>
+    <button type="button" class="item-button item-compact-all" title="Compact All"><i class="fas fa-asterisk"></i> Compact</button>
     </div>
     {{#if isOwned}}
         <div class="form-group">
-            <a class="item-control item-import-all" title="Import All"><i class="fas fa-plus"></i>  Import</a>
+            <button type="button" class="item-button item-import-all" title="Import All"><i class="fas fa-plus"></i> Import</button>
         </div>
         <div class="form-group">
             <label>Spells?</label>
