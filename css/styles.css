@@ -125,7 +125,7 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: flex-start;
-	padding: 2px 2px 0;
+	padding: 1px 1px 0;
 	justify-content: flex-end;
 	border-right: none;
   }
@@ -134,11 +134,11 @@
   }
   .itemcollection .currency li.denomination label {
 	flex: none;
-	margin-right: 3px;
+	margin-right: 2px;
   }
   .itemcollection .currency li.denomination input {
 	text-align: right;
-	max-width: 48px;
+	max-width: 46px;
 	height: 20px;
 	font-size: 12px;
 	line-height: 14px;
