@@ -2,7 +2,7 @@
     "name": "itemcollection",
     "title": "Item Containers",
     "description": "Items that can hold other items - think backpack, sack or bag of holding",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "author": "tposney",
     "languages": [
         {
@@ -28,6 +28,6 @@
       }
     ],
     "url": "https://gitlab.com/tposney/itemcollection/tree/master",
-    "manifest": "https://dl.dropboxusercontent.com/s/bdh5pgpdcgkzkem/module.json",
-    "download": "https://dl.dropboxusercontent.com/s/u9r0dyxrazysou6/itemcollection.zip"
+    "manifest": "https://gitlab.com/tposney/itemcollection/raw/master/module.json",
+    "download": "https://gitlab.com/tposney/itemcollection/raw/master/itemcollection.zip"
 }
