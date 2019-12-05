@@ -8,13 +8,32 @@ There are a few steps required for migration.
 
 Upgrade notes
 1. There are a few minor changes in the way the module works. The sysstem "weightless contents" is not used instead of the fixed weight flag. The bag weight is the sum of the container weight plus the weight of the contents (including gold if the module setting is turned on). If you set equipped to false the reported weight will be 0.
-2. You can now edit items in bags, but only 1 level deep. The module only displays the item edit icon if you are able to edit. Supporting this requires bags to pretend to have some of the features of an Actor as well as an Item and it is quite possible I have not covered all of the interaction.
+2. You can now edit items in bags, but only 1 level deep, which means you can't edit bags inside bags you must drag them into inventory/sidebar to edit them. The module only displays the item edit icon if you are able to edit. Supporting this requires bags to pretend to have some of the features of an Actor as well as an Item and it is quite possible I have not covered all of the interaction.
 3. Import/export/convert to gold/compact all work as they did before.
 4. Sometimes updating a field (equipped/weightless/import spells) requires you to close the item sheet before changes take effect.
 4. There have been major changes under the hood with this version so there are almost certainly some bugs I have not found so please make a backup of your world (or at lest the items) before using. The module seems stable enough that I have migrated my game world to it, so there is some confidence.
 5. Drag and drop still works as before. Dragging from a bag **immediately** deletes it from the bag before you drop it. So if you drop it into a strange place that can't receive it, the item will vanish from the world.
 6. Given the rapid changes in the DND5E system (including the fact that there is now a system backpack/container item) I expect that this module will be rendered obsolete - I will of course publish a migration tool when this happens.
- 
+7. There is a bug with editing bags inside tokens - put the bags in the Actor sheet rather than the token.
+8. Due to the changes in 0.4.x backpack items are not displayed for npcs. This will no doubt change, however if you are brave you can patch
+    Data/systems/dnd5e/module/actor/npc.js and change lines 43-50 from
+    ```// Categorize Items as Features and Spells
+    const features = {
+      weapons: { label: "Attacks", items: [] , hasActions: true, dataset: {type: "weapon", "weapon-type": "natural"} },
+      actions: { label: "Actions", items: [] , hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
+      passive: { label: "Features", items: [], dataset: {type: "feat"} },
+      equipment: { label: "Inventory", items: [], dataset: {type: "loot"}}
+    };```
+
+to
+    ```// Categorize Items as Features and Spells
+    const features = {
+      weapons: { label: "Attacks", items: [] , hasActions: true, dataset: {type: "weapon", "weapon-type": "natural"} },
+      actions: { label: "Actions", items: [] , hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
+      passive: { label: "Features", items: [], dataset: {type: "feat"} },
+      equipment: { label: "Inventory", items: [], dataset: {type: "loot"}}**,**
+      **containers: {label: "Containers", items: [], dataset: {type: "backpack"}}**
+    };```
 ### Main features:
 
 Bags are backpack items (so can go anywhere a backpack item can, inventory, compendium, world items) and hold other items.
