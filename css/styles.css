@@ -1,149 +1,146 @@
 
-.itemcollection .inventory-list {
+  .dnd5e.sheet.item .itemcollection-details .compressed {
+	padding: 0 0px;
+	overflow-y: auto;
+	line-height: 18px;
+	margin: 0px;
+	height: 20px;
+	overflow: hidden;
+  }
+  .dnd5e.sheet.item .itemcollection-details input[type="text"]  {
+	text-align: right;
+  }
+  .dnd5e.sheet.item .itemcollection-details .currency {
+	list-style: none;
+	flex: 0 0 20px;
+	padding: 5px;
+	font-size: 12px;
+	border: 2px groove #eeede0;
+  }
+  .dnd5e.sheet.item .itemcollection-details .currency label {
+	flex: 0;
+	margin-left: 2px;
+	text-align: left;
+	color: #7a7971;
+  }
+  .dnd5e.sheet.item .itemcollection-details  .currency input[type="text"] {
+	text-align: center;
+	max-width: 40px;
+	margin-left: 2px;
+	border-bottom: 2px groove #eeede0;
+  }
+  .dnd5e.sheet.item .itemcollection-details input[type="text"] {
+	text-align: right;
+	max-width: 60px;
+	padding-right: 0px;
+	margin-right: 0px;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list {
 	list-style: none;
 	margin: 0;
-	padding-top: 5px;
-	height: 100%;
+	padding: 0 0px;
 	overflow-y: auto;
-	/* Inventory Item */
-	/* Inventory Header */
-}
-
-.itemcollection .item-button {
-	border: 1px solid black round;
-	color:black;
-	padding: 0px 0px;
-	text-align: center;
-	font-size: 100%;
-	margin: 0px 0px;
-	cursor: pointer;
-	line-height: 18px;
-	font-weight: bold;
-}
-
-.itemcollection .inventory-list .item {
-	line-height: 24px;
-	padding: 0;
-	border-bottom: 1px solid #CCC;
-	/* Item Dropdown Summary */
   }
-.itemcollection .inventory-list .item .item-name {
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item {
+	line-height: 30px;
+	padding: 0 2px;
+	border-bottom: 1px solid #c9c7b8;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item:last-child {
+	border-bottom: none;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item .item-name {
 	cursor: pointer;
   }
-.itemcollection .inventory-list .item .item-name .item-image {
-	flex: 0 0 24px;
-	margin-right: 6px;
-	background-size: 24px;
-	background-repeat: no-repeat;
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item .item-name .item-image {
+	flex: 0 0 30px;
+	background-size: 30px;
+	margin-right: 5px;
   }
-.itemcollection .inventory-list .item .item-name h4 {
-	flex: 2;
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item .item-name h4 {
 	margin: 0;
   }
-.itemcollection .inventory-list .item .item-name .prepared {
-	color: #666;
-	margin-left: 3px;
-	font-size: 10px;
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item .item-properties {
+	margin-top: 3px;
   }
-.itemcollection .inventory-list .item .item-name .item-charges {
-	color: #666;
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item .item-quantity,
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item .item-weight
+   {
+	flex: 0 0 25px;
+	text-align: right;
+	font-size: 11px;
+	color: #7a7971;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .inventory-header {
+	margin: 2px 0;
+	padding: 0;
+	background: rgba(0, 0, 0, 0.05);
+	border: 2px groove #eeede0;
+	font-weight: bold;
+	line-height: 24px;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .inventory-header h3 {
+	margin: 0 -5px 0 0;
+	padding-left: 5px;
+	font-size: 13px;
+	font-weight: bold;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .inventory-header .item-controls .item-export-all {
+	flex: 0 0 100%;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item-detail {
+	flex: 0 0 80px;
 	font-size: 12px;
-	flex: 0;
-  }
-
-.itemcollection .inventory-list .item .item-quantity,
-.itemcollection .inventory-list .item .item-weight {
-	flex: 0 0 32px;
-	font-size: 12px;
-	color: #666;
+	color: #7a7971;
 	text-align: center;
-	border-right: 1px solid #CCC;
+	border-right: 1px solid #c9c7b8;
   }
- .itemcollection .inventory-list .inventory-header .item-controls a.item-export-all {
-	width: 100%;
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item-detail:last-child {
+	border-right: none;
   }
-.itemcollection .inventory-list .inventory-list .item-controls a.item-delete {
-	width: 100%;
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item-weight {
+	flex: 0 0 60px;
+	border-left: 1px solid #c9c7b8;
+	border-right: 1px solid #c9c7b8;
   }
-
-.itemcollection .inventory-list .item .item-controls {
-	flex: 0 0 64px;
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
   }
-.itemcollection .inventory-list .item .item-controls a {
-	display: block;
-	float: left;
-	width: 16px;
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item-controls {
+	flex: 0 0 100px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	justify-content: flex-end;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item-controls > * {
+	flex: 1;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item-controls .flex1 {
+	flex: 1;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item-controls .flex2 {
+	flex: 2;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item-controls .flex3 {
+	flex: 3;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item-controls .flex4 {
+	flex: 4;
+  }
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item-controls a {
+	flex: 0 0 20px;
 	font-size: 10px;
 	text-align: center;
 	color: #666;
   }
-  .itemcollecton .inventory-list .item .item-summary {
+  .dnd5e.sheet.item .itemcollection-details .inventory-list .item-summary {
 	flex: 0 0 100%;
 	font-size: 12px;
 	line-height: 16px;
 	padding: 0.25em 0.5em;
-	border-top: 1px solid #CCC;
-	flex-direction: column;
-  }
-  .itemcollection .inventory-list .inventory-header {
-	font-weight: 700;
-	line-height: 20px;
-	background: rgba(0, 0, 0, 0.05);
-  }
-  .itemcollection .inventory-list .inventory-header h3 {
-	flex: 2;
-	font-size: 1em;
-	margin: 0;
-	padding-left: 32px;
-	font-weight: bold;
-  }
-  .itemcollection .inventory-list .inventory-header .item-quantity,
-  .itemcollection .inventory-list .inventory-header .item-weight {
-	color: #111;
-  }
-  .itemcollection .inventory-list .inventory-header .item-controls a {
-	width: 100%;
-  }
-  .itemcollection .currency {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	border-bottom: 1px solid #CCC;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	height: 26px;
-	font-size: 12px;
-	line-height: 26px;
-  }
-  .itemcollection .currency > * {
-	flex: 1;
-  }
-  .itemcollection .currency li.denomination {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	padding: 1px 1px 0;
-	justify-content: flex-end;
-	border-right: none;
-  }
-  .itemcollection .currency li.denomination > * {
-	flex: 1;
-  }
-  .itemcollection .currency li.denomination label {
-	flex: none;
-	margin-right: 2px;
-  }
-  .itemcollection .currency li.denomination input {
-	text-align: right;
-	max-width: 46px;
-	height: 20px;
-	font-size: 12px;
-	line-height: 14px;
-	border: none;
-  }
-  .itemcollection .currency li.denomination:last-child {
-	border-right: none;
+	border-top: 1px solid #c9c7b8;
   }

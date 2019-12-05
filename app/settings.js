@@ -20,10 +20,10 @@ var ItemCollectionTemplate = (function() {
      * Some generic path references that might be useful later in the application's windows
      */
     path: {
-      root: `public/modules/${MODULE_NAME}/`,
-      rollTemplate: `public/modules/${MODULE_NAME}/templates/roll.html`,
-      itemSideBarTemplate:`public/modules/${MODULE_NAME}/templates/bag-sidebar.html`,
-      itemDetailsTemplate:`public/modules/${MODULE_NAME}/templates/bag-details.html`
+      root: `/modules/${MODULE_NAME}/`,
+      rollTemplate: `/modules/${MODULE_NAME}/templates/roll.html`,
+      itemSideBarTemplate:`/modules/${MODULE_NAME}/templates/bag-sidebar.html`,
+      itemDetailsTemplate:`/modules/${MODULE_NAME}/templates/bag-details.html`
     },
     /*
     itemSheetTemplate: `public/modules/${MODULE_NAME}/templates/itemSheet.html`,
