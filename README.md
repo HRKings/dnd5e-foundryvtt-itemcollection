@@ -17,7 +17,7 @@ Upgrade notes
 7. There is a bug with editing bags inside tokens - put the bags in the Actor sheet rather than the token.
 8. itemcollection bags now appear in the container section of the character sheet.
 8. Due to the changes in 0.4.x backpack items are not displayed for npcs. This will no doubt change, however if you are brave you can patch
-    Data/systems/dnd5e/module/actor/npc.js and change lines 43-50 from
+    Data/systems/dnd5e/module/actor/sheets/npc.js and change lines 43-50 from (note the added comma at the end of the equipment line)
 ```
 // Categorize Items as Features and Spells
     const features = {
