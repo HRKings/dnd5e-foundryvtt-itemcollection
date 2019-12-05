@@ -26,13 +26,14 @@ Upgrade notes
     };```
 
 to
+
     ```// Categorize Items as Features and Spells
     const features = {
       weapons: { label: "Attacks", items: [] , hasActions: true, dataset: {type: "weapon", "weapon-type": "natural"} },
       actions: { label: "Actions", items: [] , hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
       passive: { label: "Features", items: [], dataset: {type: "feat"} },
-      equipment: { label: "Inventory", items: [], dataset: {type: "loot"}}**,**
-      **containers: {label: "Containers", items: [], dataset: {type: "backpack"}}**
+      equipment: { label: "Inventory", items: [], dataset: {type: "loot"}},
+      containers: {label: "Containers", items: [], dataset: {type: "backpack"}}
     };```
 ### Main features:
 
