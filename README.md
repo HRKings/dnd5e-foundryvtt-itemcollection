@@ -15,26 +15,31 @@ Upgrade notes
 5. Drag and drop still works as before. Dragging from a bag **immediately** deletes it from the bag before you drop it. So if you drop it into a strange place that can't receive it, the item will vanish from the world.
 6. Given the rapid changes in the DND5E system (including the fact that there is now a system backpack/container item) I expect that this module will be rendered obsolete - I will of course publish a migration tool when this happens.
 7. There is a bug with editing bags inside tokens - put the bags in the Actor sheet rather than the token.
+8. itemcollection bags now appear in the container section of the character sheet.
 8. Due to the changes in 0.4.x backpack items are not displayed for npcs. This will no doubt change, however if you are brave you can patch
     Data/systems/dnd5e/module/actor/npc.js and change lines 43-50 from
-    ```// Categorize Items as Features and Spells
+```
+// Categorize Items as Features and Spells
     const features = {
       weapons: { label: "Attacks", items: [] , hasActions: true, dataset: {type: "weapon", "weapon-type": "natural"} },
       actions: { label: "Actions", items: [] , hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
       passive: { label: "Features", items: [], dataset: {type: "feat"} },
       equipment: { label: "Inventory", items: [], dataset: {type: "loot"}}
-    };```
+    };
+```
 
 to
 
-    ```// Categorize Items as Features and Spells
+```
+    // Categorize Items as Features and Spells
     const features = {
       weapons: { label: "Attacks", items: [] , hasActions: true, dataset: {type: "weapon", "weapon-type": "natural"} },
       actions: { label: "Actions", items: [] , hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
       passive: { label: "Features", items: [], dataset: {type: "feat"} },
       equipment: { label: "Inventory", items: [], dataset: {type: "loot"}},
       containers: {label: "Containers", items: [], dataset: {type: "backpack"}}
-    };```
+    };
+```
 ### Main features:
 
 Bags are backpack items (so can go anywhere a backpack item can, inventory, compendium, world items) and hold other items.
