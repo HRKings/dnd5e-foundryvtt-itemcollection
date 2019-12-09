@@ -1,9 +1,10 @@
 This module provides Items that are capable of holding other items; e.g. bags.
 
-## Update notes. Version 1.2 is compatible with foundry 0.4.0 and is NOT backwards caompatible with 0.3.9. If you accidentally upgrade while on 0.3.9 let me know and I can make available the previous version. PLEASE READ THE UPDATE NOTES BEFORE UPDATING.
+## Update notes. Version 1.2 is compatible with foundry 0.4.0 and is NOT backwards caompatible with 0.3.9. You must also be on dnd5e system 0.72 - NOT 0.71.
+If you accidentally upgrade while on 0.3.9 let me know and I can make available the previous version. PLEASE READ THE UPDATE NOTES BEFORE UPDATING.
 
 There are a few steps required for migration.
-1. install the module and launch your world. Each itemcolleciton item (i.e. all bags) needs to be opened for edit and a migration will happen behind the scense. A log entry will be posted to the console. The migration also migrates all of the items inside the bag and item inside bags inside the bag etc. Whilst I use the syustem migration code there are a few wrinkles that are managed by my code which of course means there could be bugs so check the items.
+1. install the module and launch your world. Each itemcolleciton item (i.e. all bags) needs to be opened for edit and a migration will happen behind the scense. A log entry will be posted to the console. The migration also migrates all of the items inside the bag and items inside bags inside the bag etc. Whilst I use the system migration code there are a few wrinkles that are managed by my code which of course means there could be bugs so check the items.
 2. For items in compendia you must import the item and it will be migrated. Then it can be moved back to the compendia. You **MUST** do the import by right clicking on the item in the compendia and choosing import, trying to open the item from the compendia will not work. Once migrated the item can be re-added to the compendia.
 
 Upgrade notes
