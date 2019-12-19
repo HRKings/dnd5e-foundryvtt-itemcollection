@@ -1,15 +1,15 @@
 This module provides Items that are capable of holding other items; e.g. bags.
 
-## Update notes. Version 1.2 is compatible with foundry 0.4.0 and is NOT backwards caompatible with 0.3.9. You must also be on dnd5e system 0.72 - NOT 0.71.
+## Update notes. Version 1.2.5 is compatible with foundry 0.4.3 and is NOT backwards caompatible with earlier versions. You must also be on dnd5e system 0.73 - NOT any previous version.
 If you accidentally upgrade while on 0.3.9 let me know and I can make available the previous version. PLEASE READ THE UPDATE NOTES BEFORE UPDATING.
 
-There are a few steps required for migration.
+There are a few steps required for migration from items in an 0.3.9 world. For worlds already on 0.4.x there is no migration step required.
 1. install the module and launch your world. Each itemcolleciton item (i.e. all bags) needs to be opened for edit and a migration will happen behind the scense. A log entry will be posted to the console. The migration also migrates all of the items inside the bag and items inside bags inside the bag etc. Whilst I use the system migration code there are a few wrinkles that are managed by my code which of course means there could be bugs so check the items.
 2. For items in compendia you must import the item and it will be migrated. Then it can be moved back to the compendia. You **MUST** do the import by right clicking on the item in the compendia and choosing import, trying to open the item from the compendia will not work. Once migrated the item can be re-added to the compendia.
 
 Upgrade notes
 1. There are a few minor changes in the way the module works. The system "weightless contents" is now used instead of the fixed weight flag. The bag weight is the sum of the "container weight" plus the weight of the contents (including gold if the module setting is turned on). If you set equipped to false the reported weight will be 0. (weightless contents + container weight = 15 is a bag of holdiong)
-2. You can now edit items in bags, but only 1 level deep, which means you can't edit bags inside bags you must drag them into inventory/sidebar to edit them. The module only displays the item edit icon if you are able to edit. Supporting this requires bags to pretend to have some of the features of an Actor as well as an Item and it is quite possible I have not covered all of the interaction.
+2. You can now edit items in bag as many levels deep as you want. The module only displays the item edit icon if you are able to edit. Supporting this requires bags to pretend to have some of the features of an Actor as well as an Item and it is quite possible I have not covered all of the interaction.
 3. Import/export/convert to gold/compact all work as they did before.
 4. Sometimes updating a field (equipped/weightless/import spells) requires you to close the item sheet before changes take effect.
 4. There have been major changes under the hood with this version so there are almost certainly some bugs I have not found so please make a backup of your world (or at lest the items) before using. The module seems stable enough that I have migrated my game world to it, so there is some confidence.
