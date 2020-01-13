@@ -2,7 +2,7 @@
     "name": "itemcollection",
     "title": "Item Containers",
     "description": "Items that can hold other items - think backpack, sack or bag of holding",
-    "version": "1.2.7",
+    "version": "1.2.8",
     "author": "tposney",
     "languages": [
         {
@@ -23,11 +23,12 @@
         "system": "dnd5e",
         "path": "./packs/packs.db",
         "module": "world",
-        "entity": "Item"
+        "entity": "Item",
+        "lang": ["en"]
       }
     ],
     "url": "https://gitlab.com/tposney/itemcollection/tree/master",
     "manifest": "https://gitlab.com/tposney/itemcollection/raw/master/module.json",
     "download": "https://gitlab.com/tposney/itemcollection/raw/master/itemcollection.zip",
-    "minimumCoreVersion": "0.4.3"
+    "minimumCoreVersion": "0.4.4"
 }
