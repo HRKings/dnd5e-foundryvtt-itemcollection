@@ -1,5 +1,10 @@
 This module provides Items that are capable of holding other items; e.g. bags.
 
+### Version 1.2.10 Comaptible with 0.4.5 and dnd0.80.
+1. No specific migration strep required from 0.4.3
+2. Added a feature that allows you to always add ropes, lanterns and mess kits to bags (they are tied on the side). The weight of the bag will include the item's weight. Thanks to @BrotherSharp for the idea.
+3. Includes ja.json localization. Thanks to @Asami for the translations.
+
 ## Update notes. Version 1.2.5 is compatible with foundry 0.4.3 and is NOT backwards caompatible with earlier versions. You must also be on dnd5e system 0.73 - NOT any previous version.
 If you accidentally upgrade while on 0.3.9 let me know and I can make available the previous version. PLEASE READ THE UPDATE NOTES BEFORE UPDATING.
 

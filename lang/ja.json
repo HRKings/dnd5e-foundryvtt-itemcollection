@@ -1,0 +1,11 @@
+{
+    "itemcollection.goldConversion.Name": "換金",
+    "itemcollection.goldConversion.Hint": "プレイヤーがバッグの中の物をお金に換えられるようにする",
+    "itemcollection.goldConversionPercentage.Name": "換金率",
+    "itemcollection.goldConversionPercentage.Hint": "売却した際に獲得できる金額",
+    "itemcollection.sortBagContents.Name": "バッグの内容を並べ替え",
+    "itemcollection.sortBagContents.Hint": "編集中のバッグの内容は､種別､呪文レベル､名前で並べ替えされます",
+    "itemcollection.NoRoomInBag": "バッグがいっぱいです。やり直してください。",
+    "itemcollection.AlternateDropInInventory" : "バッグがいっぱいなので、代わりに所持品に追加されました",
+    "itemcollection.ExtradimensionalVortex" : "バッグの上にドロップすると､超次元の渦に吸い込まれます。"
+}
