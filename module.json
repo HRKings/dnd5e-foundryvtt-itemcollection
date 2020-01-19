@@ -2,7 +2,7 @@
     "name": "itemcollection",
     "title": "Item Containers",
     "description": "Items that can hold other items - think backpack, sack or bag of holding",
-    "version": "1.2.9",
+    "version": "1.2.10",
     "author": "tposney",
     "languages": [
         {
@@ -13,7 +13,8 @@
     ],
     "systems": ["dnd5e"],
     "scripts": [
-        "app/settings.js"
+        "app/settings.js",
+        "lib/util.js"
     ],
     "esmodules": ["lib/lib.js"],
     "styles": ["css/styles.css"],
