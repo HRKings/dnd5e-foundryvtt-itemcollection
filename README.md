@@ -5,48 +5,7 @@ This module provides Items that are capable of holding other items; e.g. bags.
 2. Added a feature that allows you to always add ropes, lanterns and mess kits to bags (they are tied on the side). The weight of the bag will include the item's weight. Thanks to @BrotherSharp for the idea.
 3. Includes ja.json localization. Thanks to @Asami for the translations.
 
-## Update notes. Version 1.2.5 is compatible with foundry 0.4.3 and is NOT backwards caompatible with earlier versions. You must also be on dnd5e system 0.73 - NOT any previous version.
-If you accidentally upgrade while on 0.3.9 let me know and I can make available the previous version. PLEASE READ THE UPDATE NOTES BEFORE UPDATING.
 
-There are a few steps required for migration from items in an 0.3.9 world. For worlds already on 0.4.x there is no migration step required.
-1. install the module and launch your world. Each itemcolleciton item (i.e. all bags) needs to be opened for edit and a migration will happen behind the scense. A log entry will be posted to the console. The migration also migrates all of the items inside the bag and items inside bags inside the bag etc. Whilst I use the system migration code there are a few wrinkles that are managed by my code which of course means there could be bugs so check the items.
-2. For items in compendia you must import the item and it will be migrated. Then it can be moved back to the compendia. You **MUST** do the import by right clicking on the item in the compendia and choosing import, trying to open the item from the compendia will not work. Once migrated the item can be re-added to the compendia.
-
-Upgrade notes
-1. There are a few minor changes in the way the module works. The system "weightless contents" is now used instead of the fixed weight flag. The bag weight is the sum of the "container weight" plus the weight of the contents (including gold if the module setting is turned on). If you set equipped to false the reported weight will be 0. (weightless contents + container weight = 15 is a bag of holdiong)
-2. You can now edit items in bag as many levels deep as you want. The module only displays the item edit icon if you are able to edit. Supporting this requires bags to pretend to have some of the features of an Actor as well as an Item and it is quite possible I have not covered all of the interaction.
-3. Import/export/convert to gold/compact all work as they did before.
-4. Sometimes updating a field (equipped/weightless/import spells) requires you to close the item sheet before changes take effect.
-4. There have been major changes under the hood with this version so there are almost certainly some bugs I have not found so please make a backup of your world (or at lest the items) before using. The module seems stable enough that I have migrated my game world to it, so there is some confidence.
-5. Drag and drop still works as before. Dragging from a bag **immediately** deletes it from the bag before you drop it. So if you drop it into a strange place that can't receive it, the item will vanish from the world.
-6. Given the rapid changes in the DND5E system (including the fact that there is now a system backpack/container item) I expect that this module will be rendered obsolete - I will of course publish a migration tool when this happens.
-7. There is a bug with editing bags contained in tokens (rather than actors). Chagnes made to a bag owned by a token are processed but the item sheet does not update (close and open the sheet to see the changes). This will be fixed.
-8. itemcollection supports bags with a capacity in terms of items (as well as weight). It totals the number of each item when checking against capacity, for exampel 5 crowbars and 5 rations would fill a 10 item capacity backpack.
-9. itemcollection bags now appear in the container section of the character sheet.
-10. Due to the changes in 0.4.x backpack items are not displayed for npcs. This will no doubt change, however if you are brave you can patch
-    Data/systems/dnd5e/module/actor/sheets/npc.js and change lines 43-50 from (note the added comma at the end of the equipment line)
-```
-// Categorize Items as Features and Spells
-    const features = {
-      weapons: { label: "Attacks", items: [] , hasActions: true, dataset: {type: "weapon", "weapon-type": "natural"} },
-      actions: { label: "Actions", items: [] , hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
-      passive: { label: "Features", items: [], dataset: {type: "feat"} },
-      equipment: { label: "Inventory", items: [], dataset: {type: "loot"}}
-    };
-```
-
-to
-
-```
-    // Categorize Items as Features and Spells
-    const features = {
-      weapons: { label: "Attacks", items: [] , hasActions: true, dataset: {type: "weapon", "weapon-type": "natural"} },
-      actions: { label: "Actions", items: [] , hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
-      passive: { label: "Features", items: [], dataset: {type: "feat"} },
-      equipment: { label: "Inventory", items: [], dataset: {type: "loot"}},
-      containers: {label: "Containers", items: [], dataset: {type: "backpack"}}
-    };
-```
 ### Main features:
 
 Bags are backpack items (so can go anywhere a backpack item can, inventory, compendium, world items) and hold other items.
@@ -72,12 +31,36 @@ Bags are backpack items (so can go anywhere a backpack item can, inventory, comp
 
 ### Notes
 - The UI is pretty rough at the moment, it will be improved.
-
-- Items in bags CANNOT be edited, only imported/exported/dragged/dropped/expanded or converted to gold. You must move the item into your inventory to edit it.
-
-- Bags in unlinked tokens can only be dragged or dropped not editied. (If you try to edit you will see READ ONLY in the item name).
+- If you get the message "Bags must be of type backpac" the item has the item5eSheetWithBags set as its sheet but it is not a backpack. Change the sheet back to default. If you have a backpack from a previous version and you get this message, it is of type loot. You need to convert it to type backpack.
+- Copy it to the sidebard and then run ```Itemcollection.convertToBackpack("item name")``` from the console or as a macro
 
 - When you drag an item from a bag it is **immediately** deleted from the bag. If you drop it somewhere that cannot receive it, it will **disappear** from the game. This means that dragging/dropping from bags does not create new items in the game. A better programmer would work out how to delete the item only on drop.
+- Due to the changes in 0.4.x backpack items are not displayed for npcs. This will no doubt change, however if you are brave you can patch
+    
+Data/systems/dnd5e/module/actor/sheets/npc.js and change lines 43-50 from (note the added comma at the end of the equipment line)
+```
+// Categorize Items as Features and Spells
+    const features = {
+      weapons: { label: "Attacks", items: [] , hasActions: true, dataset: {type: "weapon", "weapon-type": "natural"} },
+      actions: { label: "Actions", items: [] , hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
+      passive: { label: "Features", items: [], dataset: {type: "feat"} },
+      equipment: { label: "Inventory", items: [], dataset: {type: "loot"}}
+    };
+```
+
+to
+
+```
+    // Categorize Items as Features and Spells
+    const features = {
+      weapons: { label: "Attacks", items: [] , hasActions: true, dataset: {type: "weapon", "weapon-type": "natural"} },
+      actions: { label: "Actions", items: [] , hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
+      passive: { label: "Features", items: [], dataset: {type: "feat"} },
+      equipment: { label: "Inventory", items: [], dataset: {type: "loot"}},
+      containers: {label: "Containers", items: [], dataset: {type: "backpack"}}
+    };
+```
+
 
 If worrying about encumbrance is not your idea of fun, just give players a capacity 0, fixed weight 0 item or two and they can just push equipment around to their heart's content.
 
@@ -107,8 +90,6 @@ The -Unequip button will unequip the item from your inventory (setting its weigh
 
 The *Compact button compacts all items into a single line with the correct quantity. For spells, there is no quantity, so this acts as deduplicate. Since the list is always sorted you can use this to tidy up your spell book. 
 
-The +Import brings all items in you inventory into the bag (excepting the bag itself and other bags). If the Spells? checkbox is selected then spells will be imported instead. This will only import inventory items, or if spells is ticked all spells from your spellbook. To add other items to a bag you must drop them in.
-
 Normally the weight of the bag updates as you add/delete items (currency weight is included according to the game setting). A GM can set the item to Fixed Weight and enter a weight in the adjacent weight field which is what will be shown in the inventory/encumberance. It is not a good idea to give players a fixed weight item with capacity 0 (unlimited) since this allows them to keep as much equipment as they like.
 
 Items can be dragged into or out of the bag. Be careful when dragging out of the bag since the item is immediately removed from the bag when you start the drag. If you change your mind make sure to drop the item back into the bag or it will disappear.
@@ -126,7 +107,7 @@ The $ sign converts the item to GP at the module configured setting percentage. 
 
 Create an item and change it's character sheet to ItemSheet5eWithBags. Then edit the item.
 
-**DO NOT SET THE DEFAULT SHEET** to ItemSheet5eWithBags or every backpack item you edit/create will be a bag. If you do create an item as a bag by mistake, change the item sheet back to the default. The item will still be treated as a bag for import/export but otherwise should be fine.
+**DO NOT SET THE DEFAULT SHEET** to ItemSheet5eWithBags or every backpack item you edit/create will be a bag. If you do create an item as a bag by mistake, change the item sheet back to the default.
 
 - This is an **alpha** release and whilst I have done quite a bit of testing it is quite possible that something will go wrong and trash your items. I **strongly** suggest you try this out in a test world first and make sure you can do what you want. I also strongly suggest you make a backup of you world directory before you start playing.
 - I will investigate making items editable for the next release but it may require a substantial change to the code.
