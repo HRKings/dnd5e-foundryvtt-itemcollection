@@ -3,7 +3,8 @@ This module provides Items that are capable of holding other items; e.g. bags.
 ### Version 1.2.10 Comaptible with 0.4.5 and dnd0.80.
 1. No specific migration strep required from 0.4.3
 2. Added a feature that allows you to always add ropes, lanterns and mess kits to bags (they are tied on the side). The weight of the bag will include the item's weight. Thanks to @BrotherSharp for the idea.
-3. Includes ja.json localization. Thanks to @Asami for the translations.
+3.  See notes section if you receive "Bags must be of type backpack" error messages.
+4. Includes ja.json localization. Thanks to @Asami for the translations.
 
 
 ### Main features:
@@ -31,7 +32,7 @@ Bags are backpack items (so can go anywhere a backpack item can, inventory, comp
 
 ### Notes
 - The UI is pretty rough at the moment, it will be improved.
-- If you get the message "Bags must be of type backpack" the item has the item5eSheetWithBags set as its sheet but it is not a backpack. Change the sheet back to default. If you have a backpack from a previous version and you get this message, it is of type loot. You need to convert it to type backpack.
+- If you get the message "Bags must be of type backpack" the item has the item5eSheetWithBags set as its sheet but it is not a backpack. Change the sheet back to default if you did not intend for it to be a backpack. If you have a backpack from a previous version and you get this message, it is of type loot. You need to convert it to type backpack.
 - Copy it to the sidebar and then run ```Itemcollection.convertToBackpack("item name")``` from the console or as a macro
 
 - When you drag an item from a bag it is **immediately** deleted from the bag. If you drop it somewhere that cannot receive it, it will **disappear** from the game. This means that dragging/dropping from bags does not create new items in the game. A better programmer would work out how to delete the item only on drop.
@@ -86,7 +87,7 @@ The -ALL button exports all items back to the players inventory (if the bag is i
 
 The - next to the item exports the single item to the characters inventory if the items is owned by a character.
 
-The -Unequip button will unequip the item from your inventory (setting its weight to 0), it wont remove it. If the bag has a capacity of 0 (infinite) you cannot unequip it. When unequipped it changes to +Equip.
+The -Unequip checkbox will unequip the item from your inventory (setting its weight to 0), it wont remove it.
 
 The *Compact button compacts all items into a single line with the correct quantity. For spells, there is no quantity, so this acts as deduplicate. Since the list is always sorted you can use this to tidy up your spell book. 
 
@@ -105,7 +106,7 @@ The $ sign converts the item to GP at the module configured setting percentage. 
 
 ### Creating a bag
 
-Create an item and change it's character sheet to ItemSheet5eWithBags. Then edit the item.
+Create an item which must be of type backpack and change it's item sheet sheet to ItemSheet5eWithBags. Then edit the item.
 
 **DO NOT SET THE DEFAULT SHEET** to ItemSheet5eWithBags or every backpack item you edit/create will be a bag. If you do create an item as a bag by mistake, change the item sheet back to the default.
 
@@ -117,9 +118,6 @@ Create an item and change it's character sheet to ItemSheet5eWithBags. Then edit
 
 ### Bugs
 
-Bags in tokens cannot be edited.
-
-Editing of items in bags is not supported.
 
 The mod is not very chatty about refusing to accept dropped items, there are a few error messages displayed on the user screen.
 
