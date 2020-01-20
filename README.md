@@ -31,8 +31,8 @@ Bags are backpack items (so can go anywhere a backpack item can, inventory, comp
 
 ### Notes
 - The UI is pretty rough at the moment, it will be improved.
-- If you get the message "Bags must be of type backpac" the item has the item5eSheetWithBags set as its sheet but it is not a backpack. Change the sheet back to default. If you have a backpack from a previous version and you get this message, it is of type loot. You need to convert it to type backpack.
-- Copy it to the sidebard and then run ```Itemcollection.convertToBackpack("item name")``` from the console or as a macro
+- If you get the message "Bags must be of type backpack" the item has the item5eSheetWithBags set as its sheet but it is not a backpack. Change the sheet back to default. If you have a backpack from a previous version and you get this message, it is of type loot. You need to convert it to type backpack.
+- Copy it to the sidebar and then run ```Itemcollection.convertToBackpack("item name")``` from the console or as a macro
 
 - When you drag an item from a bag it is **immediately** deleted from the bag. If you drop it somewhere that cannot receive it, it will **disappear** from the game. This means that dragging/dropping from bags does not create new items in the game. A better programmer would work out how to delete the item only on drop.
 - Due to the changes in 0.4.x backpack items are not displayed for npcs. This will no doubt change, however if you are brave you can patch
