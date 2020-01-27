@@ -32,7 +32,7 @@ Bags are backpack items (so can go anywhere a backpack item can, inventory, comp
 
 ### Notes
 - The UI is pretty rough at the moment, it will be improved.
-- If you get the message "Bags must be of type backpack" the item has the item5eSheetWithBags set as its sheet but it is not a backpack. Change the sheet back to default if you did not intend for it to be a backpack. If you have a backpack from a previous version and you get this message, it is of type loot. You need to convert it to type backpack.
+- If you get the message "Bags must be of type backpack" the item has the item5eSheetWithBags set as its sheet but it is not a backpack. If you have a backpack from a previous version and you get this message, it is of type loot. You need to convert it to type backpack.
 - Copy it to the sidebar and then run ```Itemcollection.convertToBackpack("item name")``` from the console or as a macro
 
 - When you drag an item from a bag it is **immediately** deleted from the bag. If you drop it somewhere that cannot receive it, it will **disappear** from the game. This means that dragging/dropping from bags does not create new items in the game. A better programmer would work out how to delete the item only on drop.
@@ -76,14 +76,11 @@ To install a module, follow these instructions:
 3. Restart Foundry Virtual Tabletop.  
 4. Since this module includes a compendium of items the first time you run foundry will complain and not let you open the compendium. Simply restart foundry a second time and all should be good.
 5. To create a bag from scratch, simple create any backpack item then set its iemsheet to be ItemSheet5eWithBags and all the necessary data will be created. I very strongly recommend that you **ONLY** do this for items you want to have as bags since once added the data is there forever. 
-6. **DO NOT** SET THE DEFAULT BACKPACK SHEET TO ItemSheet5eWithBags. If you do the world will explode and terrbie plagues will be brought down on us all. Actually it just means each backpack item you create will also be a bag.
 
 Or use this URL to install via the module isntallation menu in Foundry: https://gitlab.com/tposney/itemcollection/raw/master/module.json
 Once you have a bag (or drag one from the pre-created ones) the gm will see something like this. Players will only see the options available to them.
 
 ![All Options - GM view](images/All Options - GM view.png)
-
-The -ALL button exports all items back to the players inventory (if the bag is in a players inventory) and nothing otherwise. The -All and - single actions DO NOT WORK for tokens not lined to an actor.
 
 The - next to the item exports the single item to the characters inventory if the items is owned by a character.
 
@@ -108,9 +105,8 @@ The $ sign converts the item to GP at the module configured setting percentage. 
 
 Create an item which must be of type backpack and change it's item sheet sheet to ItemSheet5eWithBags. Then edit the item.
 
-**DO NOT SET THE DEFAULT SHEET** to ItemSheet5eWithBags or every backpack item you edit/create will be a bag. If you do create an item as a bag by mistake, change the item sheet back to the default.
 
-- This is an **alpha** release and whilst I have done quite a bit of testing it is quite possible that something will go wrong and trash your items. I **strongly** suggest you try this out in a test world first and make sure you can do what you want. I also strongly suggest you make a backup of you world directory before you start playing.
+- This is an **beta** release and whilst I have done quite a bit of testing it is quite possible that something will go wrong and trash your items. I **strongly** suggest you try this out in a test world first and make sure you can do what you want. I also strongly suggest you make a backup of you world directory before you start playing.
 - I will investigate making items editable for the next release but it may require a substantial change to the code.
 - There are two modules flags that are set at world level, can you convert items to gold and what percentage of the value is added to the bag when conversion is done. These are world flags so can only be set by the GM.
 - There is a sort bag contents flag as well, which is settable by each user. Items are sorted by type (weapon, spell etc), then name. Spells are also sorted by level.
