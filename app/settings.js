@@ -21,9 +21,8 @@ var ItemCollectionTemplate = (function() {
      */
     path: {
       root: `/modules/${MODULE_NAME}/`,
-      rollTemplate: `/modules/${MODULE_NAME}/templates/roll.html`,
-      itemSideBarTemplate:`/modules/${MODULE_NAME}/templates/bag-sidebar.html`,
-      itemDetailsTemplate:`/modules/${MODULE_NAME}/templates/bag-details.html`
+      itemSideBarTemplate:`/modules/${MODULE_NAME}/templates/bag-sheet.html`,
+      itemDetailsTemplate:`/modules/${MODULE_NAME}/templates/shop.html`,
     },
     /*
     itemSheetTemplate: `public/modules/${MODULE_NAME}/templates/itemSheet.html`,
@@ -62,8 +61,8 @@ var ItemCollectionTemplate = (function() {
         scope: "module",
         default: true,
         type: Boolean
-    }
-  ]
+      }
+    ]
   };
 
   return {
