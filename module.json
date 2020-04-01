@@ -9,6 +9,14 @@
             "lang": "en",
             "name": "English",
             "path": "lang/en.json"
+        }{
+            "lang": "kr",
+            "name": "Korean",
+            "path": "lang/kr.json"
+        }{
+            "lang": "ja",
+	    "name": " 日本語",
+            "path": "lang/ja.json"
         }
     ],
     "systems": ["dnd5e"],

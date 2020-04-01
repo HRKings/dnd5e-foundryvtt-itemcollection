@@ -1,0 +1,19 @@
+{
+    "itemcollection.goldConversion.Name": "금화 환금",
+    "itemcollection.goldConversion.Hint": "플레이어들이 소지품을 금화로 변환할 수 있도록 허용한다",
+    "itemcollection.goldConversionPercentage.Name": "환금 비율",
+    "itemcollection.goldConversionPercentage.Hint": "환금을 했을 때 플레이어들이 얻는 금화의 비율",
+    "itemcollection.sortBagContents.Name": "가방 내용물 정렬",
+    "itemcollection.sortBagContents.Hint": "편집 중인 가방의 내용물이 타입, 주문 레벨, 이름 별로 정렬된다.",
+    "itemcollection.NoRoomInBag": "가방이 가득 찼습니다. 다시 시도하십시오.",
+    "itemcollection.AlternateDropInInventory" : "가방이 가득 찼으며, 아이템은 인벤토리에 추가됩니다.",
+    "itemcollection.ExtradimensionalVortex" : "가방을 떨어뜨리자 초차원적 소용돌이가 생성되며 당신은 빨려들어갔습니다.",
+    "itemcollection.canAlwaysAddToBag": ["황소눈 랜턴", "덮개 랜턴", "마 로프 (50ft)", "비단 로프 (50ft)", "반합", "침낭"],
+    "itemcollection.wrongType": "가방은 반드시 배낭 유형이어야 합니다. 편집 불가.", 
+    "itemcollection.billoffare": "아이템 판매",
+    "itemcollection.purchase": "매입",
+    "itemcollection.Markup": "가게 프리미엄 %",
+    "itemcollection.noSelection": "토큰/액터가 선택되지 않았습니다.",
+    "itemcollection.NotEnoghGold": " 소지금이 부족합니다."
+
+}
