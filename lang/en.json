@@ -10,6 +10,8 @@
     "itemcollection.ExtradimensionalVortex" : "Dropping a bag on itself creates an extra-dimensional vortex and you have been sucked in.",
     "itemcollection.canAlwaysAddToBag": ["Bulls Eye Lantern", "Hooded Lantern", "Hempen Rope (50ft)", "Silk Rope (50ft)", "Mess Kit", "Bedroll"],
     "itemcollection.wrongType": "Bags must be of type backpack. Editing disabled", 
+    "itemcollection.canAlwaysAddToBagTypes": ["Lantern", "Hempen Rope", "Silk Rope", "Mess Kit", "Bedroll"],
+
     "itemcollection.billoffare": "Items For Sale",
     "itemcollection.purchase": "Purchase",
     "itemcollection.Markup": "Shop Premium %",
