@@ -10,6 +10,8 @@
     "itemcollection.ExtradimensionalVortex" : "가방을 떨어뜨리자 초차원적 소용돌이가 생성되며 당신은 빨려들어갔습니다.",
     "itemcollection.canAlwaysAddToBag": ["황소눈 랜턴", "덮개 랜턴", "마 로프 (50 ft.)", "실크 로프 (50 ft.)", "반합", "침낭"],
     "itemcollection.wrongType": "가방은 반드시 배낭 유형이어야 합니다. 편집 불가.", 
+    "itemcollection.canAlwaysAddToBagTypes": ["랜턴", "마 로프", "실크 로프", "반합", "침낭"],
+
     "itemcollection.billoffare": "아이템 판매",
     "itemcollection.purchase": "매입",
     "itemcollection.Markup": "가게 프리미엄 %",
