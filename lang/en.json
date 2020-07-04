@@ -13,7 +13,7 @@
     "itemcollection.canAlwaysAddToBagTypes": ["Lantern", "Hempen Rope", "Silk Rope", "Mess Kit", "Bedroll"],
 
     "itemcollection.billoffare": "Items For Sale",
-    "itemcollection.purchase": "Purchase",
+    "itemcollection.Purchase": "Purchase",
     "itemcollection.Markup": "Shop Premium %",
     "itemcollection.noSelection": "No Token/Actor selected",
     "itemcollection.NotEnoghGold": " Not enough gold to buy"
