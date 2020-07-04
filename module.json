@@ -41,6 +41,6 @@
     "url": "https://gitlab.com/tposney/itemcollection/tree/master",
     "manifest": "https://gitlab.com/tposney/itemcollection/raw/master/module.json",
     "download": "https://gitlab.com/tposney/itemcollection/raw/master/itemcollection.zip",
-    "minimumCoreVersion": "0.5.7",
-    "compatibleCoreVersion": "0.6.1"
+    "minimumCoreVersion": "0.5.4",
+    "compatibleCoreVersion": "0.6.4"
 }
