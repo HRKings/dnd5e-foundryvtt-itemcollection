@@ -1,0 +1,21 @@
+{
+    "itemcollection.goldConversion.Name": "Converter em Ouro",
+    "itemcollection.goldConversion.Hint": "Permite aos jogadores converter conteudo dos conteiners em moedas de ouro",
+    "itemcollection.goldConversionPercentage.Name": "Porcentagem da Conversão em Moedas de Ouro",
+    "itemcollection.goldConversionPercentage.Hint": "Qual a porcentagem do valor será convertida em moedas de ouro",
+    "itemcollection.sortBagContents.Name": "Ordenar Conteudo dos Conteiners",
+    "itemcollection.sortBagContents.Hint": "O Conteudo dos Conteiners serão organizadar por Tipo, Nivel de Magia e Nome",
+    "itemcollection.NoRoomInBag": "O conteiner está cheio. Tente Novamente..",
+    "itemcollection.AlternateDropInInventory" : "O Conteiner está cheio, o item foi adicionado ao seu inventário",
+    "itemcollection.ExtradimensionalVortex" : "Arrastar um conteiner para dentro de outro cria um vortex extradimensional e você é sugado apra ele.",
+    "itemcollection.canAlwaysAddToBag": ["Bulls Eye Lantern", "Hooded Lantern", "Hempen Rope (50ft)", "Silk Rope (50ft)", "Mess Kit", "Bedroll"],
+    "itemcollection.wrongType": "Conteiners devem ser do tipo 'mochila'. edição desabilitada.", 
+    "itemcollection.canAlwaysAddToBagTypes": ["Lantern", "Hempen Rope", "Silk Rope", "Mess Kit", "Bedroll"],
+
+    "itemcollection.billoffare": "Itens para venda",
+    "itemcollection.purchase": "Compra",
+    "itemcollection.Markup": "Loja Premium %",
+    "itemcollection.noSelection": "Sem Token/Ator selecionado",
+    "itemcollection.NotEnoghGold": " Não tem moedas suficientes para a compra."
+
+}
