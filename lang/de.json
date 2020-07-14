@@ -1,0 +1,21 @@
+{
+    "itemcollection.goldConversion.Name": "Goldumwandlung",
+    "itemcollection.goldConversion.Hint": "Gestattet es Spielern, Rucksackinhalte in Gold umzuwandeln",
+    "itemcollection.goldConversionPercentage.Name": "Prozentsatz der Goldumwandlung",
+    "itemcollection.goldConversionPercentage.Hint": "Welchen Prozentsatz des Goldwertes erhalten die Spieler, wenn sie eine Goldkonvertierung durchführen",
+    "itemcollection.sortBagContents.Name": "Behälterinhalt sortieren",
+    "itemcollection.sortBagContents.Hint": "Der Inhalt der Behälter, die du bearbeitest, wird nach Typ, Rechtschreibstufe und Name sortiert.",
+    "itemcollection.NoRoomInBag": "Der Behälter ist voll. Versuche es noch einmal.",
+    "itemcollection.AlternateDropInInventory" : "Der Behälter ist voll, der Artikel wurde stattdessen in dein Inventar aufgenommen.",
+    "itemcollection.ExtradimensionalVortex" : "Lässt man einen Sack auf sich selbst fallen, entsteht ein extra-dimensionaler Wirbel, und man wird hinein gesaugt.",
+    "itemcollection.canAlwaysAddToBag": ["Bulls Eye Lantern", "Hooded Lantern", "Hempen Rope (50ft)", "Silk Rope (50ft)", "Mess Kit", "Bedroll"],
+    "itemcollection.wrongType": "Behälter müssen vom Typ Rucksack sein. Bearbeitung ist nicht möglich.", 
+    "itemcollection.canAlwaysAddToBagTypes": ["Lantern", "Hempen Rope", "Silk Rope", "Mess Kit", "Bedroll"],
+
+    "itemcollection.billoffare": "Zum Verkauf stehende Artikel",
+    "itemcollection.Purchase": "Kaufen",
+    "itemcollection.Markup": "Laden-Prämie %",
+    "itemcollection.noSelection": "Kein Token/Akteur ausgewählt",
+    "itemcollection.NotEnoghGold": "Nicht genug Gold zum Kaufen"
+
+}
