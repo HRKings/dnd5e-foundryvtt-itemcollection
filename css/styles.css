@@ -1,4 +1,13 @@
-
+  .dnd5e.sheet.item .itemcollection-details {
+    color: #404040;
+  }
+ 
+  .dnd5e.sheet.item .itemcollection-details select {
+    color: #404040;
+  }
+  .dnd5e.sheet.item .itemcollection-details h3 {
+    color: #404040;
+  }
   .dnd5e.sheet.item .itemcollection-details .compressed {
 	padding: 0 0px;
 	overflow-y: auto;
@@ -21,7 +30,6 @@
 	flex: 0;
 	margin-left: 2px;
 	text-align: left;
-	color: #7a7971;
   }
   .dnd5e.sheet.item .itemcollection-details  .currency input[type="text"] {
 	text-align: center;
@@ -67,7 +75,6 @@
 		flex: 0 0 30px;
 		text-align: right;
 		font-size: 11px;
-		color: #7a7971;
 	}
 
   .dnd5e.sheet.item .itemcollection-details .inventory-list .item .item-quantity,
@@ -76,7 +83,6 @@
 		flex: 0 0 25px;
 		text-align: right;
 		font-size: 11px;
-		color: #7a7971;
   }
   .dnd5e.sheet.item .itemcollection-details .inventory-list .inventory-header {
 	margin: 2px 0;
@@ -98,7 +104,6 @@
   .dnd5e.sheet.item .itemcollection-details .inventory-list .item-detail {
 	flex: 0 0 80px;
 	font-size: 12px;
-	color: #7a7971;
 	text-align: center;
 	border-right: 1px solid #c9c7b8;
   }
@@ -142,7 +147,6 @@
 	flex: 0 0 20px;
 	font-size: 10px;
 	text-align: center;
-	color: #666;
   }
   .dnd5e.sheet.item .itemcollection-details .inventory-list .item-summary {
 	flex: 0 0 100%;

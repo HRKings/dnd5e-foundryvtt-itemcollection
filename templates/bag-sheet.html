@@ -41,7 +41,7 @@
             {{> "systems/dnd5e/templates/items/parts/item-description.html"}}
     
             {{!-- Details Tab --}}
-            <div class="tab active" data-group="primary" data-tab="details">
+            <div class="tab active itemcollection-details" data-group="primary" data-tab="details">
                 <h3 class="form-header">{{localize 'DND5E.ItemContainerDetails'}}</h3>
     
                 <div class ="itemcollection-details ">
@@ -52,7 +52,7 @@
                                 data-dtype="Number" placeholder="-">
                     </div>
         
-                    <div class="form-group compressed">
+                    <div class="itemcollection-details form-group compressed">
                         <label>{{localize 'DND5E.ItemContainerCapacityType'}}</label>
                         <select name="data.capacity.type">
                             {{#select data.capacity.type}}
