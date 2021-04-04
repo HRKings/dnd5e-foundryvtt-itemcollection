@@ -1,0 +1,21 @@
+{
+    "itemcollection.goldConversion.Name": "تحويل الذهب",
+    "itemcollection.goldConversion.Hint": "السماح للاعبين بتحويل محتويات الحقيبة إلى ذهب",
+    "itemcollection.goldConversionPercentage.Name": "نسبة تحويل الذهب",
+    "itemcollection.goldConversionPercentage.Hint": "نسبة قيمة الذهب الذي يحصل عليها اللاعبون عند تحويل الذهب",
+    "itemcollection.sortBagContents.Name": "ترتيب محتويات الحقيبة",
+    "itemcollection.sortBagContents.Hint": "محتويات الحقيبة التي تقوم بتحريرها سوف يتم ترتيبها حسب النوم، ومستوى التعويذة، والاسم",
+    "itemcollection.NoRoomInBag": "هذه الحقيبة ممتلئة. حاول مرة أخرى.",
+    "itemcollection.AlternateDropInInventory" : "هذه الحقيبة ممتلئة، القطعة تم إضافتها إلى مخزونك بدلاً من ذلك",
+    "itemcollection.ExtradimensionalVortex" : "وضع الحقيبة داخل ذاتها يصنع دوامة بعد إضافي وتم سحبك داخلها.",
+    "itemcollection.canAlwaysAddToBag": ["فانوس مصوب", "فانوس مقنع", "حبل قنبي (50 قدم)", "حبل حريري (50 قدم)", "عدة طعام", "لفة فراش"],
+    "itemcollection.wrongType": "الحقائب يجب أن تكون من نوع حقيبة ظهر. الحرير ملغي.", 
+    "itemcollection.canAlwaysAddToBagTypes": ["مصباح", "حبل قنبي", "حبل حريري", "عدة طعام", "لفة فراش"],
+
+    "itemcollection.billoffare": "قطع للبيع",
+    "itemcollection.Purchase": "شراء",
+    "itemcollection.Markup": "شراء ممتاز %",
+    "itemcollection.noSelection": "لم يتم اختيار رمز/ممثل",
+    "itemcollection.NotEnoghGold": "لا يوجد ذهب كافي للشراء"
+
+}
