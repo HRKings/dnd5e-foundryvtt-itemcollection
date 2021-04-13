@@ -65,7 +65,9 @@ to
 
 If worrying about encumbrance is not your idea of fun, just give players a capacity 0, fixed weight 0 item or two and they can just push equipment around to their heart's content.
 
+### libWrapper
 
+This module uses the [libWrapper](https://github.com/ruipin/fvtt-lib-wrapper) library for wrapping core methods. It is a hard dependency and it is recommended for the best experience and compatibility with other modules.
 
 ### Installation Instructions
 
@@ -115,14 +117,26 @@ Create an item which must be of type backpack and change it's item sheet sheet t
 ### Bugs
 
 
-The mod is not very chatty about refusing to accept dropped items, there are a few error messages displayed on the user screen.
+- The mod is not very chatty about refusing to accept dropped items, there are a few error messages displayed on the user screen.
 
-Item export is quite slow for inventories of many items. This is a side effect of having to await each add from the inventory and my ineptitude at working out how to do it faster.
+- Item export is quite slow for inventories of many items. This is a side effect of having to await each add from the inventory and my ineptitude at working out how to do it faster.
 
-There is a bug that setting an item to fixed weight is not immediately reflected in the total weight. Simply unequip/equip to update.
+- There is a bug that setting an item to fixed weight is not immediately reflected in the total weight. Simply unequip/equip to update.
 
-Because there are many item create when exporting the actors table gets updated much more often. This can make the system a little slow when the actors table gets very full. Importing does not suffer have the same problem.
+- Because there are many item create when exporting the actors table gets updated much more often. This can make the system a little slow when the actors table gets very full. Importing does not suffer have the same problem.
+
+- There is some incompatibility with [foundry-vtt-dnd5e-types](https://github.com/League-of-Foundry-Developers/foundry-vtt-dnd5e-types) but should be fixed on the future
 
 ### Feedback
 
 If you have any suggestions or feedback, please contact me on discord @tposney
+
+## Acknowledgements
+
+Bootstrapped with League of Extraordinary FoundryVTT Developers  [foundry-vtt-types](https://github.com/League-of-Foundry-Developers/foundry-vtt-types).
+
+Bootstrapped with League of Extraordinary FoundryVTT Developers  [foundry-vtt-dnd5e-types](https://github.com/League-of-Foundry-Developers/foundry-vtt-dnd5e-types).
+
+Mad props to the 'League of Extraordinary FoundryVTT Developers' community which helped me figure out a lot.
+
+
