@@ -1,10 +1,12 @@
-import { DND5E } from "/systems/dnd5e/module/config.js";
-import Item5e from "/systems/dnd5e/module/item/entity.js";
-import ItemSheet5e from "/systems/dnd5e/module/item/sheet.js";
-import { ItemSheet5eWithBags } from "/modules/itemcollection/lib/ItemSheet5eWithBags.js"
+// import { DND5E } from '../../../systems/dnd5e/module/config.js';
+// import Item5e from '../../../systems/dnd5e/module/item/entity.js';
+// import ItemSheet5e from '../../../systems/dnd5e/module/item/sheet.js';
 
-let knownSheets = {};
-let templates = {};
+import { getCanvas, MODULE_NAME } from "./settings";
+import { ItemSheet5eWithBags } from "./ItemSheet5eWithBags"
+
+// let knownSheets = {};
+// let templates = {};
 
 export class ItemSheetShop extends ItemSheet5eWithBags {
   static get defaultOptions() {
@@ -12,13 +14,14 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
     mergeObject(options, {
       width: 570,
       height: 500,
+      //@ts-ignore
       showUnpreparedSpells: true
     });
     return options;
   }
 
   get template() {
-    return  "modules/itemcollection/templates/shop-sheet.html";
+    return  `/modules/${MODULE_NAME}/templates/shop-sheet.html`;
   }
 
 
@@ -27,34 +30,34 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
   }
 
   async _onSubmit(event, {updateData=null, preventClose=false}={}) {
-    if (this.item.type !== "backpack") updateData = expandObject({"flags.-=itemcollection": null});
+    if (this.baseitem.type !== "backpack") updateData = expandObject({"flags.-=itemcollection": null});
       super._onSubmit(event, {"updateData": updateData, "preventClose": preventClose})
   }
 
   async getData() {
-    const type = this.item.data.type;
+    const type = this.baseitem.data.type;
 
     if (!["backpack"].includes(type)) {
-      ui.notifications.error(game.i18n.localize("itemcollection.wrongType"))
-      this.options.editable = false;
+      ui.notifications.error(game.i18n.localize(MODULE_NAME+".wrongType"))
+      this.baseapps.options.editable = false;
       return super.getData();
     };
   
-    this._sheetTab="details"
+    this.baseapps._sheetTab="details"
 
-    const item = this.item;
-    var data = super.getData();
+    const item = this.baseapps.item;
+    var data:any = super.getData();
     data.flags = item.data.flags
 
-    if (!hasProperty(data.flags, "itemcollection.markup"))
-      setProperty(data.flags,"itemcollection.markup", 10);
+    if (!hasProperty(data.flags, MODULE_NAME+".markup"))
+      setProperty(data.flags,MODULE_NAME+".markup", 10);
 
-    let markup = (getProperty(data.flags,"itemcollection.markup") || 0) / 100;
+    let markup = (getProperty(data.flags,MODULE_NAME+".markup") || 0) / 100;
     for (let i = 0; i < data.flags.itemcollection.contents.length; i++) {
       data.flags.itemcollection.contents[i].data.marketPrice = Math.floor(data.flags.itemcollection.contents[i].data.price * (1+markup));
     }
 
-    this.options.editable = this.options.editable// && (!this.item.actor || !this.item.actor.token);
+    //this.baseapps.options.editable = this.baseapps.options.editable// && (!this.baseitem.actor || !this.baseitem.actor.token);
     return data;
   }
 
@@ -70,7 +73,7 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
   async _onDragItemStart(event) {
     event.stopPropagation();
     if (game.user.isGM) super._onDragItemStart(event);
-    return true;
+    // return true;
   }
 
   canAdd(itemData) {
@@ -96,7 +99,7 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
     }
     // Case 1 - Data explicitly provided
     if ( data.data ) {
-      if ((this.item.isOwned && data.actorId === this.item.actor._id) && data.data._id === this.item.data._id) {
+      if ((this.baseitem.isOwned && data.actorId === this.baseitem.actor._id) && data.data._id === this.baseitem.data._id) {
         console.log("ItemCollection | Cant drop on yourself");
         ui.notifications.info(game.i18n.localize('itemcollection.ExtradimensionalVortex'));
         throw new Error("Dragging bag onto istelf opens a planar vortex and you are sucked into it")
@@ -128,7 +131,7 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
 
   async _importItemFromCollection(collection, entryId) {
     const pack = game.packs.find(p => p.collection === collection);
-    if ( pack.metadata.entity !== "Item" && pack.metadata.entity !== "Spell") return;
+    if ( <string>pack.metadata.entity !== "Item" && <string>pack.metadata.entity !== "Spell") return;
     return pack.getEntity(entryId).then(ent => {
       // delete ent.data._id;
         console.log(`ItemCollection | Importing Item ${ent.name} from ${collection}`);
@@ -141,7 +144,7 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
   async _itemExport(event) {
     event.stopPropagation();
 
-    return true;
+    // return true;
     // no exporting for shops
   }
 
@@ -149,34 +152,34 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
     event.stopPropagation();
     // find out the actor doing the buying and flag error if no selecte
     let actor;
-    if (canvas.tokens.controlled.length > 0) {
-      actor = canvas.tokens.controlled[0].actor;
+    if (getCanvas().tokens.controlled.length > 0) {
+      actor = getCanvas().tokens.controlled[0].actor;
     }
     if (!actor) actor = game.actors.get(ChatMessage.getSpeaker().actor);
     if (!actor) {
-      ui.notifications.warn(`${game.i18n.localize("itemcollection.noSelection")}`)
+      ui.notifications.warn(`${game.i18n.localize(MODULE_NAME+".noSelection")}`)
       return;
     }
 
     // find the item
     let li = $(event.currentTarget).parents(".item");
     let id = Number(li.attr("data-item-id"));
-    let items = duplicate(this.item.getFlag("itemcollection", "contents"));
+    let items = duplicate(this.baseitem.getFlag(MODULE_NAME, "contents"));
     let idx = items.findIndex(o => o._id === id);
-    if (idx === -1) throw new Error(`Item ${id} not found in Shop ${this.item._id}`);
+    if (idx === -1) throw new Error(`Item ${id} not found in Shop ${this.baseitem._id}`);
     let itemData = items[idx];
 
     // ask how many they want to buy
     let quantity = 1;
 
-    let markup = (getProperty(this.object.data.flags,"itemcollection.markup") || 0) / 100;
+    let markup = (getProperty(this.baseapps.object.data.flags,MODULE_NAME+".markup") || 0) / 100;
     let goldValue = Math.floor((itemData.data.price * (1 + markup) * 10000))/ 10000 * quantity;
     let currency = duplicate(actor.data.data.currency);
     // check if they have enough money to pay for it and the currency adjustments needed.
     let coinValue = currency ?  Object.keys(currency)
         .reduce((val, denom) => val += {"pp" :10, "gp": 1, "ep": 0.5, "sp": 0.1, "cp": 0.01}[denom] * currency[denom], 0) : 0;
     if (coinValue < goldValue) {
-      ui.notifications.error(game.i18n.localize("itemcollection.NotEnoghGold"))
+      ui.notifications.error(game.i18n.localize(MODULE_NAME+".NotEnoghGold"))
       return;
     }
     coinValue = (coinValue - goldValue) * 100; // how much we have left
@@ -202,33 +205,33 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
       await actor.createOwnedItem(newItem, {});
     }
     // add the gold to the shop
-    currency = duplicate(this.item.data.data.currency);
+    currency = duplicate(this.baseitem.data.data.currency);
     currency.gp += goldValue;
-    if (this.item.isOwned) {
-      await this.item.actor.updateOwnedItem({"_id": this.item._id, "data.currency": currency})
-    } await this.item.update({"data.currency": currency});
-    this.item.data.data.currency.gp = currency.gp;
+    if (this.baseitem.isOwned) {
+      await this.baseitem.actor.updateOwnedItem({"_id": this.baseitem._id, "data.currency": currency})
+    } await this.baseitem.update({"data.currency": currency});
+    this.baseitem.data.data.currency.gp = currency.gp;
 
     // remove the item from the shop deleting the item if the shop runs out
     items[idx].data.quantity -= quantity;
     if (items[idx].data.quantity  <= 0) {
       await this.deleteOwnedItem(id);
     } else {
-      if (this.item.actor) {
-        await this.item.updateParent(items);
-      } else (await this.item.update({"flags.itemcollection.contents": items}));
+      if (this.baseitem.actor) {
+        await this.baseitem.updateParent(items);
+      } else (await this.baseitem.update({"flags.itemcollection.contents": items}));
     }
     this.render(false);
   }
 
   async _exportAll(event) {
     event.stopPropagation();
-    return false;
+    //return false;
   }
   
   update(data,options) {
-    ev.stopPropagation();
-    this.item.update(data, options)
+    //ev.stopPropagation();
+    this.baseitem.update(data, options)
   }
   
   async _editItem(event) {
@@ -245,7 +248,7 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
     super.activateListeners(html);
 
     // Everything below is only needed if the sheet is editable
-    if ( !this.options.editable ) return;
+    if ( !this.baseapps.options.editable ) return;
 
     html.find("input").focusout(this._onUnfocus.bind(this));
 
@@ -264,6 +267,7 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
     if (game.user.isGM) {
       super._onDragEnd(event);
     }
+    return false;
   }
   _onDragOver(event) {
     event.preventDefault();
@@ -271,11 +275,11 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
   }
 
   _onUnfocus(event) {
-    this._submitting = true;
+    // this._submitting = true;
     setTimeout(() => {
       let hasFocus = $(":focus").length;
       if ( !hasFocus ) this._onSubmit(event);
-      this._submitting = false;
+      // this._submitting = false;
     }, 25);
   }
 }
