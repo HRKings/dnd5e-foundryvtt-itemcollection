@@ -152,7 +152,7 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
     event.stopPropagation();
     // find out the actor doing the buying and flag error if no selecte
     let actor;
-    if (getCanvas().tokens.controlled.length > 0) {
+    if (getCanvas()?.tokens.controlled.length > 0) {
       actor = getCanvas().tokens.controlled[0].actor;
     }
     if (!actor) actor = game.actors.get(ChatMessage.getSpeaker().actor);
