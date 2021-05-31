@@ -87,7 +87,6 @@ function setup(templateSettings) {
 			config: true,
 			default: setting.default,
 			type: setting.type,
-			choices: {}
 		};
 		if (setting.choices) {
       options.choices = setting.choices;

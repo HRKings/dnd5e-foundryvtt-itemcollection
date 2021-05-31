@@ -1,0 +1,54 @@
+<div class="tab flexrow active" data-group="primary" data-tab="description">
+
+  <div class="item-properties">
+    <div class="form-group">
+      <label>{{ localize "DND5E.Quantity" }}</label>
+      <input type="text" name="data.quantity" value="{{data.quantity}}" data-dtype="Number" />
+    </div>
+
+    <div class="form-group">
+      <label>{{ localize "DND5E.Weight" }}</label>
+      <input type="text" name="data.weight" value="{{data.weight}}" data-dtype="Number" />
+    </div>
+
+    <div class="form-group">
+      <label>{{ localize "DND5E.Price" }}</label>
+      <input type="text" name="data.price" value="{{data.price}}" data-dtype="Number" />
+    </div>
+
+    <div class="form-group">
+      <label>{{localize 'DND5E.ItemContainerCapacity'}}</label>
+      <div class="form-fields">
+        <input type="text" name="data.capacity.value" value="{{data.capacity.value}}" data-dtype="Number"
+          placeholder="-">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>{{localize 'DND5E.ItemContainerCapacityType'}}</label>
+      <select name="data.capacity.type">
+        {{#select data.capacity.type}}
+        {{#each config.itemCapacityTypes}}
+        <option value="{{@key}}">{{localize this}}</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Bag Weight</label>
+      <input type="number" name="flags.itemcollection.bagWeight" value="{{flags.itemcollection.bagWeight}}">
+    </div>
+    <div class="form-group">
+      <label>Bag Price</label>
+      <input type="number" name="flags.itemcollection.bagPrice" value="{{flags.itemcollection.bagPrice}}">
+    </div>
+
+    <ol class="properties-list">
+      {{#each itemProperties}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ol>
+  </div>
+  {{editor content=data.description.value target="data.description.value" button=true owner=owner editable=editable}}
+</div>

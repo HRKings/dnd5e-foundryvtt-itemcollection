@@ -1,4 +1,14 @@
-This module provides Items that are capable of holding other items; e.g. bags.
+This module provides Items that are capable of holding other items; e.g. bags.  
+
+For **foundry 0.8.4** or later you must install via module.json and use:
+```
+https://gitlab.com/tposney/itemcollection/raw/08x/package/module.json
+```
+The 0.8.x version as been an almost complete rewrite of the module, so there might be some teething issues. Notable changes:
+* item weight is correctly updated in the actor inventory as items are added/deleted.
+* Gold value and item price is updated correctly.
+### v1.3.4
+You must uninstall and reinstall the module to get the latest version if you are on a version before 1.3.4
 
 ### Version 1.2.10 Comaptible with 0.4.5 and dnd0.80.
 1. No specific migration strep required from 0.4.3
@@ -72,6 +82,9 @@ This module uses the [libWrapper](https://github.com/ruipin/fvtt-lib-wrapper) li
 ### Installation Instructions
 
 To install a module, follow these instructions:
+Easiest solution is to install from the foundry modules page.
+
+Or
 
 1. [Download the zip](https://gitlab.com/tposney/itemcollection/raw/master/itemcollection.zip) file included in the module directory, or paste the url for the module.json into the install maodule option.
 2. Extract the included folder to `public/modules` in your Foundry Virtual Tabletop installation folder.
@@ -79,7 +92,9 @@ To install a module, follow these instructions:
 4. Since this module includes a compendium of items the first time you run foundry will complain and not let you open the compendium. Simply restart foundry a second time and all should be good.
 5. To create a bag from scratch, simple create any backpack item then set its iemsheet to be ItemSheet5eWithBags and all the necessary data will be created. I very strongly recommend that you **ONLY** do this for items you want to have as bags since once added the data is there forever. 
 
-Or use this URL to install via the module isntallation menu in Foundry: https://gitlab.com/tposney/itemcollection/raw/master/module.json
+Or
+
+Use this URL to install via the module isntallation menu in Foundry: "https://gitlab.com/tposney/itemcollection/raw/master/package/module.json"
 Once you have a bag (or drag one from the pre-created ones) the gm will see something like this. Players will only see the options available to them.
 
 ![All Options - GM view](images/All Options - GM view.png)
