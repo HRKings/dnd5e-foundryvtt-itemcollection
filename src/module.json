@@ -90,14 +90,11 @@
     "url": "https://gitlab.com/tposney/itemcollection/tree/master",
     "readme": "https://gitlab.com/tposney/itemcollection/raw/master/README.md",
     "manifest": "https://gitlab.com/tposney/itemcollection/raw/08x/package/module.json",
-    "download": "https://gitlab.com/tposney/itemcollection/raw/08x/package/itemcollection-v0.8.2.zip",
-    "changelog": "https://gitlab.com/tposney/itemcollection/raw/master/changelog.md",
-    "bugs": "https://gitlab.com/tposney/itemcollection/-/issues",
-    "allowBugReporter": true,
+    "download": "https://gitlab.com/tposney/itemcollection/raw/08x/package/itemcollection-v1.8.0.zip",
+    "changelog": "https://gitlab.com/tposney/itemcollection/raw/master/Changelog.md",
     "minimumCoreVersion": "0.8.4",
     "compatibleCoreVersion": "0.8.6",
     "minimumSystemVersion": "1.3.2",
-    "manifestPlusVersion": "1.0.0",
     "dependencies": [
       {
         "name": "lib-wrapper"
