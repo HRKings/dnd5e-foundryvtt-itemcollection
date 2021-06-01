@@ -92,9 +92,12 @@
     "manifest": "https://gitlab.com/tposney/itemcollection/raw/08x/package/module.json",
     "download": "https://gitlab.com/tposney/itemcollection/raw/08x/package/itemcollection-v1.8.0.zip",
     "changelog": "https://gitlab.com/tposney/itemcollection/raw/master/Changelog.md",
+    "bugs": "https://gitlab.com/tposney/itemcollection/-/issues",
+    "allowBugReporter": true,
     "minimumCoreVersion": "0.8.4",
-    "compatibleCoreVersion": "0.8.6",
+    "compatibleCoreVersion": "0.8.4",
     "minimumSystemVersion": "1.3.2",
+    "manifestPlusVersion": "1.0.0",
     "dependencies": [
       {
         "name": "lib-wrapper"
