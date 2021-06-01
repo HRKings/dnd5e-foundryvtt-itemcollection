@@ -1,6 +1,5 @@
 ## 1.8.0
 foundry 0.8.6 compatibility update.
-Bags pretty much as a foundry Item. There is a lot of muching around under the hood but most things work as you would expect.
 * Item import/export is much faster now.
 * All item export also exports currency to the parent (actor or item);
 * Weight/gold value update correctly when items are changed, even if not being edited.
@@ -8,8 +7,9 @@ Bags pretty much as a foundry Item. There is a lot of muching around under the h
 * Only bakcpacks can be item containers. Make sure you enable the sheet for the item to be able to add/remove items.
 * Item containers behave like any other item and can be dragged/dropped to actors/work/compendia.
 * Item containers can contain other item containers so you can have nested bags.
+* Item shop got an overhaul as well - purchasing auto decrements the cost from players inventory.
 
-* Simplified settings. Bag weight, bag price are the only two itemcollection specific settings. Bag weight is the empty weight of the bag. Itemcollection also uses the dnd5e settings, capacity, weightless contents, and capacity type.
+* Simplified settings. Bag weight and bag price are the only two itemcollection specific settings. Bag weight is the empty weight of the bag. Itemcollection also uses the dnd5e settings, capacity, weightless contents, and capacity type.
 
 * You are best off creating bags via the ItemSheet5eWithBags editor, but once done they can be used much like other items, say you create a backpack called "bag" and give it to the actor "test" and edit with ItemSheet5eWithBags or ItemSheetShop.
 
@@ -24,7 +24,8 @@ Bags pretty much as a foundry Item. There is a lot of muching around under the h
     Itemcollection.migrateAllTokenItems() - migrate items for all unlinked tokens.  
     Itemcollection.migrateAllItems() - migrate all the world items  
 
-Items work mostly like any other embedded collection, except that they are store in an item flag.
+Items work mostly like any other embedded collection, except that they are stored in an item flag.
+
 ```js
 item = game.actors.getName("test").items.getName("bag")
 itemToInsert = game.items.getName("Arrows")
