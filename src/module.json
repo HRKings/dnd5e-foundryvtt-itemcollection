@@ -98,7 +98,7 @@
     "manifestPlusVersion": "1.0.0",
     "dependencies": [
       {
-        "name": "lib-wrapper"
+        "name": "lib-wrapper", "type": "module"
       }
     ]
 }
