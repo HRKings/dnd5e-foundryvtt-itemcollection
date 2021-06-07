@@ -6,7 +6,7 @@
 
     <div class="header-details flexrow">
       <h1 class="charname">
-        <input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'DND5E.ItemName' }}"  />
+        <input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'DND5E.ItemName' }}" />
       </h1>
 
       <div class="item-subtitle">
@@ -39,22 +39,17 @@
     {{> "modules/itemcollection/templates/bag-description.html"}}
 
     {{!-- Details Tab --}}
-    <div class="tab details" data-group="primary" data-tab="details">
+    <div class="tab details itemcollection-details" data-group="primary" data-tab="details">
       <h3 class="form-header">{{localize 'DND5E.ItemContainerDetails'}} {{parentName}}</h3>
 
-     
-    <div class="form-group compressed">
-      <label class="checkbox">
-        <input type="checkbox" name="data.capacity.weightless" {{checked data.capacity.weightless}}>
-        {{localize 'DND5E.ItemContainerWeightless'}}
-      </label>
-    </div>
+      <div class="form-group compressed">
+        <label class="checkbox">
+          <input type="checkbox" name="data.capacity.weightless" {{checked data.capacity.weightless}}>
+          {{localize 'DND5E.ItemContainerWeightless'}}
+        </label>
 
-      <div class="form-group compressed">
-        <label>Contents Weight</label> {{itemsWeight}}
-      </div>
-      <div class="form-group compressed">
-        <label>GP Value</label> {{totalGoldValue}}
+        <div><label>Contents Weight </label> {{itemsWeight}} </div>
+        <div><label>GP Value </label> {{totalGoldValue}} </div>
       </div>
 
       {{#if data.currency}}
@@ -90,25 +85,25 @@
               {{/if}}
               {{item.name}}
             </h4>
-            <div>{{item.data.quantity}}</div>
-            <div>{{item.data.weight}}</div>
-            <div class="item-controls flexrow">
-              <a class="item-control item-edit" title='{{localize "DND5E.ItemEdit"}}'><i class="fas fa-edit"></i></a>
-              {{#if item.isBackpack}}
-              <a class="item-control item-export" title="Import Contents"><i class="fas fa-asterisk"></i></a>
-              {{else}}
-              {{#if ../isOwned}}
-              {{#if ../canImportExport}}
-              <a class="item-control item-export" title="Export to Owner"><i class="fas fa-minus"></i></a>
-              {{/if}}
-              {{/if}}
-              <a class="item-control item-split" title="Split Item"><i class="fas fa-columns"></i></a>
-              {{#if ../canConvertToGold}} <a class="item-control item-convertToGold" title="Convert To Gold"><i
-                  class="fas fa-dollar-sign"></i></a> {{/if}}
-              {{/if}}
-              <a class="item-control item-delete" title='{{localize "DND5E.ItemDelete"}}'><i
-                  class="fas fa-trash"></i></a>
-            </div>
+          </div>
+          <div>{{item.data.quantity}}</div>
+          <div>{{item.data.weight}}</div>
+
+          <div class="item-controls flexrow">
+            <a class="item-control item-edit" title='{{localize "DND5E.ItemEdit"}}'><i class="fas fa-edit"></i></a>
+            {{#if item.isBackpack}}
+            <a class="item-control item-export" title="Import Contents"><i class="fas fa-asterisk"></i></a>
+            {{else}}
+            {{#if ../isOwned}}
+            {{#if ../canImportExport}}
+            <a class="item-control item-export" title="Export to Owner"><i class="fas fa-minus"></i></a>
+            {{/if}}
+            {{/if}}
+            <a class="item-control item-split" title="Split Item"><i class="fas fa-columns"></i></a>
+            {{#if ../canConvertToGold}} <a class="item-control item-convertToGold" title="Convert To Gold"><i
+                class="fas fa-dollar-sign"></i></a> {{/if}}
+            {{/if}}
+            <a class="item-control item-delete" title='{{localize "DND5E.ItemDelete"}}'><i class="fas fa-trash"></i></a>
           </div>
         </li>
         {{/each}}

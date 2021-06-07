@@ -48,9 +48,10 @@ export let setupHooks = () => {
   Hooks.on("preCreateItem", (candidate, data, options, user) => {
     if (!(candidate instanceof Item 
           && candidate.type === "backpack" 
+          && data.flags?.itemcollection
           && candidate.data.flags?.itemcollection?.verion !== "0.8.6")) 
         return true;
-    if (data.flags.itemcollection.contents && data.flags.itemcollection?.version !== "0.8.6") { // old version to convert
+    if (data.flags.itemcollection?.contents && data.flags.itemcollection?.version !== "0.8.6") { // old version to convert
       const itemcollectionData = {
         contentsData: duplicate(data.flags.itemcollection.contents || []), 
         version: "0.8.6", 

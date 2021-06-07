@@ -76,8 +76,6 @@ Hooks.once('setup', function () {
 	Items.registerSheet("dnd5e", ItemSheetShop, { makeDefault: false, types:["backpack"]});
 
   setupHooks();
-
-
 });
 
 /* ------------------------------------ */
@@ -97,7 +95,11 @@ Hooks.once('ready', async () => {
     migrateAllActorItems,
     migrateAllTokenItems,
     migrateAllItems,
-    migrateWorld
+    migrateWorld,
+    Shops: {
+      createShop,
+      createShopItem
+    }
   }
 });
 
@@ -166,4 +168,66 @@ async function migrateAllItems() {
 
 async function migrateWorld() {
   Promise.all([migrateAllItems(), migrateAllActorItems(), migrateAllTokenItems()]);
+}
+
+export async function createShop(compendiumName, shopName, conditions: {}, {minValue = 0, minQuantity = 0, createShop = false}) {
+  let compendium = game.packs.get(compendiumName);
+  if (!compendium){
+    ui.notifications.warn(`Could not find compendium ${compendiumName}`)
+    console.error(`Could not find compendium ${compendiumName}`)
+    return;
+  }
+  let shop = game.items.getName(shopName);
+  if (createShop) {
+    shop = await createShopItem(shopName);
+    console.error("Itemcollection: Created shop shopName", duplicate(shop.data.flags.itemcollection))
+  } else if (!shop || shop.type !== "backpack") {
+    ui.notifications.warn(`Could not find a shop named ${shopName}`)
+    console.error(`Could not find a shop named ${shopName}`)
+    return;
+  }
+  //@ts-ignore
+  await compendium.getDocuments()
+  //@ts-ignore
+  let itemsToAdd = compendium.filter(item => chooseCondition(item, conditions))
+      .map(item => item.data)
+      .map(itemData => {
+        itemData.data.quantity = Math.max(itemData.data.quantity || 0, minQuantity); 
+        return itemData
+      })
+      .map(itemData => {
+        if (itemData.data.price && minValue > (itemData.data.quantity * itemData.data.price)) { 
+          itemData.data.quantity = Math.ceil(minValue/itemData.data.price);
+        }
+        return itemData;
+      });
+  //@ts-ignore
+  console.log(`Creating ${itemsToAdd.length} items, out of ${compendium.size} in ${shopName}`);
+  //@ts-ignore createEmbeddedDocuments
+  await shop.createEmbeddedDocuments("Item", itemsToAdd);
+  ui.notifications.notify(`Shop ${shopName} finished`)
+}
+export function chooseCondition(item, {rarity = "", type = "", consumableType = "", equipmentType = "", nameRegExp = null,maxPrice= 9999999999999999999999}) {
+  if (rarity && item.data.data.rarity !== rarity) return false;
+  if (type && item.type !== type) return false;
+  if (item.data.data.price > maxPrice) return false;
+  if (item.type === "consumable" && consumableType && consumableType !== item.data.data.consumableType) return false;
+  if (item.type === "equipment" && equipmentType && equipmentType !== item.data.data.armor.type) return false;
+  if (nameRegExp && !item.name.match(nameRegExp)) return false;
+  return true;
+}
+
+export async function createShopItem(shopName) {
+  return Item.create({
+    name: shopName, 
+    type: "backpack", 
+    "flags.core.sheetClass": "dnd5e.ItemSheetShop",
+    img: "icons/environment/settlement/market-stall.webp",
+    "flags.itemcollection.contentsData": [],
+    "flags.itemcollection.bagWeight": 0,
+    "flags.itemcollection.bagPrice": 0,
+    "flags.itemcollection.version": "0.8.6",
+    "data.capacity.value": 0,
+    "data.capacity.weightless": true,
+  })
 }

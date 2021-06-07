@@ -42,30 +42,21 @@
     <div class="tab details" data-group="primary" data-tab="details">
       <h3 class="form-header">{{localize 'DND5E.ItemContainerDetails'}} {{parentName}}</h3>
 
-
       <div class="form-group compressed">
-        <label class="checkbox">
-          <input type="checkbox" name="data.capacity.weightless" {{checked data.capacity.weightless}}>
-          {{localize 'DND5E.ItemContainerWeightless'}}
-        </label>
-      </div>
-
-      <div class="form-group compressed">
-        <label>Contents Weight</label> {{itemsWeight}}
-      </div>
-      <div class="form-group compressed">
-        <label>GP Value</label> {{totalGoldValue}}
+        <label>{{localize 'Filter'}}</label>
+        <input type="text" name="flags.itemcollection.nameFilter" value="{{flags.itemcollection.nameFilter}}"
+          data-dtype="String" placeholder="">
       </div>
       {{#if isGM}}
       <div class="form-group compressed">
-        <label>GP Value</label> {{flags.itemcollection.goldValue}}
+        <label>GP Value </label> {{totalGoldValue}}
       </div>
       <div class="form-group compressed">
         <label>{{localize 'itemcollection.Markup'}}</label>
         <input type="text" name="flags.itemcollection.markup" value="{{flags.itemcollection.markup}}"
-          data-dtype="Number" placeholder="-">
+          data-dtype="Number" placeholder="">
       </div>
-      {{/if}}
+
       {{#if data.currency}}
       <ol class="currency flexrow">
         {{#each data.currency as |v k|}}
@@ -74,6 +65,7 @@
         {{/each}}
       </ol>
       {{/if}}
+      {{/if}}
 
       <li class="items-header flexrow" style="text-align: center;">
         <div class="item-name flexrow">Name</div>
@@ -81,16 +73,19 @@
         <div class="item-detail item-weight">{{localize "DND5E.Weight"}}</div>
         <div class="item-detail">{{localize "DND5E.Price"}}</div>
         <div class=item-control>
+          {{#if isGM}}
           {{#if isOwned}}
           <a class="item-control item-export-all" title="Export All Items"><i class="fas fa-minus"> All</i></a>
           <a class="item-control item-import-all" title="Import All Items"><i class="fas fa-plus"> All</i></a>
           {{/if}}
           <a class="item-control item-compact-all" title="Compact All Items"><i class="fas fa-star"> All</i></a>
+          {{/if}}
         </div>
       </li>
 
       <ol class="items-list inventory-list">
         {{#each flags.itemcollection.contentsData as |item iid|}}
+        {{#if item.display}}
         <li class="item flexrow" data-item-id="{{item._id}}">
           <div class="item-name flexrow">
             <div class="item-image" style="background-image: url('{{item.img}}')"></div>
@@ -100,20 +95,21 @@
               {{/if}}
               {{item.name}}
             </h4>
-            <div>{{item.data.quantity}}</div>
-            <div>{{item.data.weight}}</div>
-            <span class="item-price">{{item.data.marketPrice}}</span>
-            <div class="item-controls">
-              <a class="item-control item-convertToGold" title="{{localize 'itemcollection.Purchase'}}"><i
-                  class="fas fa-dollar-sign"></i></a>
-              <a class="item-control item-split" title="Split Item"><i class="fas fa-columns"></i></a>
-              {{#if ../isGM}}
-              <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-              <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-              {{/if}}
-            </div>
+          </div>
+          <div>{{item.data.quantity}}</div>
+          <div>{{item.data.weight}}</div>
+          <span class="item-price">{{item.data.marketPrice}}</span>
+          <div class="item-controls">
+            <a class="item-control item-convertToGold" title="{{localize 'itemcollection.Purchase'}}"><i
+                class="fas fa-dollar-sign"></i></a>
+            <a class="item-control item-split" title="Split Item"><i class="fas fa-columns"></i></a>
+            {{#if ../isGM}}
+            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+            {{/if}}
           </div>
         </li>
+        {{/if}}
         {{/each}}
       </ol>
     </div>

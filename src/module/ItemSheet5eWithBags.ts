@@ -393,6 +393,7 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
   }
 
   _onItemSummary(event) {
+    return;
     event.preventDefault();
     let li = $(event.currentTarget).parents(".item"),
         item = this.item.items.get(li.data("item-id")),

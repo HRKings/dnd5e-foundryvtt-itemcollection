@@ -1,3 +1,53 @@
+## 1.8.1
+* An easy way to create item shops. For example:
+```
+Itemcollection.Shops.createShop("dnd5e.items", "Legendary Shop", {"rarity": "Legendary"}, {minQuantity: 1, createShop: true})
+```
+Will create a fully populated shop item with all the legendary items from the compendium dnd5e.items.
+The syntax is 
+* Itemcollection.Shops.createShop(source-compendium-name, shop-name, filters, options)
+  - source-compendium-name is any compendium you have that has items in it, e.g. dnd5e.items
+  - shop-name is the name of the shop. If the option createShop is true a new shop will be created, otherwise the items are appended to the existing shop.
+  - filters are any/all of
+    type: "weapon" or any other item type  
+    consumableType: "potion" (or any of the consumable subtypes)  
+    equipmentType: "light", or any of the other armor types  
+    maxPrice: 1000, no items that cost more than this will be included  
+    rarity: "Common" or any of the rarity options (Common, Uncommon, Rare.....)  
+    nameRegExp: /[Pp]otion/, a regular expression that the name must match.
+      A item must pass ALL the filters for it to be included in the shop.
+  - options are any/all of
+    createShop: true/false. If true a new shop is created, if false the items are appended to the existing shop
+    minQuantity: number create items with a quantity of at least number.
+    minValue: number - a total of "number" gold pieces worth of the item are created.
+Some examples:
+```js
+Itemcollection.Shops.createShop("dnd5e.items", "Potion Shop", {type: "consumable", consumableType: "potion"}, {minQuantity: 1, createShop: true})
+```
+will create a shop with one of every potions in it.
+Create a shop with all the common swords in it
+```js
+Itemcollection.Shops.createShop("dnd5e.items", "Sword Shop", {nameRegExp: /[Ss]word/, rarity: "Common"}, {minQuantity: 1, createShop: true})
+```
+Add in all the uncommon swords.
+```js
+Itemcollection.Shops.createShop("dnd5e.items", "Sword Shop", {nameRegExp: /[Ss]word/, rarity: "Uncommon"}, {minQuantity: 1, createShop: false})
+```
+Now add all the rare swords
+```js
+Itemcollection.Shops.createShop("dnd5e.items", "Sword Shop", {nameRegExp: /[Ss]word/, ratrity: "Rare"}, {minQuantity: 1, createShop: false})
+```
+The sample Potion Shop was created with:
+```
+Itemcollection.Shops.createShop("dnd5e.items", "Potion Shop", {rarity: "Common", nameRegExp: /[Pp]otion/}, {minQuantity: 2, minValue: 100, createShop: true})
+Itemcollection.Shops.createShop("dnd5e.items", "Potion Shop", {rarity: "Uncommon", nameRegExp: /[Pp]otion/}, {minQuantity: 2, minValue: 200, createShop: false})
+Itemcollection.Shops.createShop("dnd5e.items", "Potion Shop", {rarity: "Rare", nameRegExp: /[Pp]otion/}, {minQuantity: 2, minValue: 200, createShop: false})
+```
+The General Store was created via
+```js
+Itemcollection.Shops.createShop("dnd5e.items", "General Store", {rarity: "Common"}, {minQuantity: 10, minValue: 10, createShop: true})
+```
+
 ## 1.8.0
 foundry 0.8.6 compatibility update.
 * Item import/export is much faster now.

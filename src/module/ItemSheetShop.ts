@@ -48,17 +48,19 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
 
     const item = this.item;
     var data:any = await super.getData(options);
-
     if (!hasProperty(data.flags, MODULE_NAME+".markup"))
       setProperty(data.flags,MODULE_NAME+".markup", 10);
 
-    let markup = (getProperty(data.flags,MODULE_NAME+".markup") || 10) / 100;
+    let markup = (getProperty(data.flags,MODULE_NAME+".markup") || 0) / 100;
+    let nameFilter = item.data.flags.itemcollection.nameFilter;
     for (let i = 0; i < data.flags.itemcollection.contentsData.length; i++) {
       let itemData = data.flags.itemcollection.contentsData[i];
+      itemData.display = !nameFilter || (itemData.name.toLocaleLowerCase().includes(nameFilter))
       if (!itemData.data.price)
         itemData.data.marketPrice = "";
       else
-        itemData.data.marketPrice = Math.floor((itemData.data.price ?? 0) * (1+markup));
+        itemData.data.marketPrice = Math.ceil((itemData.data.price ?? 0) * (1+markup) * 100) / 100;
+      if (itemData.data.marketPrice > 10) itemData.data.marketPrice = Math.ceil(itemData.data.marketPrice)
     }
 
     //this.baseapps.options.editable = this.baseapps.options.editable// && (!this.item.actor || !this.item.actor.token);
@@ -106,6 +108,7 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
 
     let markup = (getProperty(this.item.data.flags,MODULE_NAME+".markup") || 0) / 100;
     let goldValue = Math.floor((itemData.data.price * (1 + markup) * 10000))/ 10000 * quantity;
+    console.error("Gold value is ", goldValue)
     let currency = duplicate(actor.data.data.currency);
     // check if they have enough money to pay for it and the currency adjustments needed.
     let coinValue = currency ?  Object.keys(currency)
@@ -117,7 +120,7 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
     coinValue = (coinValue - goldValue) * 100; // how much we have left
     let conversion = {"cp" : 10, "sp": 10, "ep": 5, "gp": 10, "pp": 100000000000000};
     let newCurrency = ["cp", "sp", "gp", "pp"].reduce((nc,denom) => {
-      nc[denom] =  coinValue % conversion[denom];
+      nc[denom] =  Math.floor(coinValue % conversion[denom]);
       coinValue = denom !== "pp" ? Math.floor(coinValue / conversion[denom]) : coinValue;
       return nc;
     }, {"pp" : 0, "gp": 0, "ep": 0, "sp": 0, "cp": 0});
@@ -128,9 +131,10 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
 
     // add the item to the actor
     let doMerge = true;
-    let existing = actor.data.items.find(i=>i.name === itemData.name && i.type === itemData.type);
+    let existing = actor.items.find(i=>i.name === itemData.name && i.type === itemData.type);
+    console.error("existing is ", existing)
     if (existing && doMerge) {
-      await actor.updateEmbeddedDocuments("Item", [{"_id": existing._id, "data.quantity": existing.data.quantity + quantity}]);
+      await actor.updateEmbeddedDocuments("Item", [{"_id": existing.id, "data.quantity": (existing.data.data.quantity || 0) + quantity}]);
     } else {
       let newItem = duplicate(itemData);
       newItem.data.quantity = quantity;
