@@ -49,6 +49,11 @@ Itemcollection.Shops.createShop("dnd5e.items", "General Store", {rarity: "Common
 ```
 
 ## 1.8.0
+How to migrate once you've installed the update and all your items has disappeared.
+Backup your world and then form the console (or a macro) run
+```
+await Itemcollection.migrateWorld()
+```
 foundry 0.8.6 compatibility update.
 * Item import/export is much faster now.
 * All item export also exports currency to the parent (actor or item);
@@ -66,7 +71,7 @@ foundry 0.8.6 compatibility update.
 * This has been pretty much a complete rewrite of item containers for foundry 0.8.x and I think it works much more cleanly/consistently now.
 
 * A number of migration functions are provided: (A note before migrating - BACKUP YOUR WORLD FIRST - I have run the conversion scripts on my world without it breaking but your mileage may vary)
-    await Itemcollection.migrateWorld() - migrates backpacks for all actors, tokens and world items  
+    await Itemcollection.migrateWorld() - migrates backpacks for all actors, tokens and world items  - this is the one to do it ally.
     Itemcollection.migrateItems(item collection) - The specific set of items 
     - e.g. await Itemcollection.migrateItems(game.items);  
     Itemcollection.migrateActorItems(actor) - migrate the items for a specific actor  
