@@ -2,7 +2,7 @@ This module provides Items that are capable of holding other items; e.g. bags.
 
 
 The 0.8.x version as been an almost complete rewrite of the module, so there might be some teething issues. Notable changes:
-Please see 
+Please see [1.8.x changelog](https://gitlab.com/tposney/itemcollection/-/blob/08x/Changelog.md) for details and migration steps
 item weight is correctly updated in the actor inventory as items are added/deleted.
 Gold value and item price is updated correctly.
 
