@@ -2,10 +2,7 @@ This module provides Items that are capable of holding other items; e.g. bags.
 
 
 The version for foundry 0.8.x has been an almost complete rewrite of the module, so there might be some teething issues. Notable changes:
-Please see [1.8.x changelog](https://gitlab.com/tposney/itemcollection/-/blob/08x/Changelog.md) for details and migration steps
-item weight is correctly updated in the actor inventory as items are added/deleted.
-Gold value and item price is updated correctly.
-
+Please see [1.8.x changelog](https://gitlab.com/tposney/itemcollection/-/blob/08x/Changelog.md) - particularly the 1.8.0 detials - for more information and migration steps
 
 v1.3.4
 You must uninstall and reinstall the module to get the latest version if you are on a version before 1.3.4
