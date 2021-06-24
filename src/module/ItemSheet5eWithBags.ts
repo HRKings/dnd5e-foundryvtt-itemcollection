@@ -347,15 +347,15 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
   }
 
   async _exportAll(event) {
+    ui.notifications.warn("Disabled due to bugs - use drag and drop or single item export");
+    return;
     if (!this.item.parent) return;
     if (this.item.items.length === 0) return;
     const itemsData = duplicate(getProperty(this.item.data.flags, "itemcollection.contentsData") ?? []);
     const toDelete = itemsData.map(idata => idata._id);
-    Hooks.once("updateItem", () => {
-      this.item.parent.createEmbeddedDocuments("Item", itemsData);
-    })
+    await this.item.parent.createEmbeddedDocuments("Item", itemsData);
+    await this.updateParentCurrency(this.item.data.data.currency);
     await this.item.deleteEmbeddedDocuments("Item", toDelete)
-    this.updateParentCurrency(this.item.data.data.currency);
     // this.render(true);
   }
   
@@ -458,6 +458,8 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
   }
 
   async _importAllItemsFromParent(parent) {
+    ui.notifications.warn("Disabled due to bugs - use drag and drop");
+    return;
     if (!parent) return;
     const itemsToImport = [];
     for (let testItem of parent.items) {
@@ -465,8 +467,9 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
         itemsToImport.push(testItem.data.toJSON());
     }
     const itemsToDelete = itemsToImport.map(itemData => itemData._id);
-    Hooks.once("updateItem", () => parent.deleteEmbeddedDocuments("Item", itemsToDelete));
     await this.item.createEmbeddedDocuments("Item", itemsToImport);
+    await parent.deleteEmbeddedDocuments("Item", itemsToDelete);
+
     this.render();
   }
 

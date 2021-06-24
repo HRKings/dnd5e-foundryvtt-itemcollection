@@ -1,3 +1,6 @@
+## 1.8.2
+* Disable import/export all due to occasional data corruption - will re-enable once fixed
+
 ## 1.8.1
 * An easy way to create item shops. For example:
 ```
