@@ -85,7 +85,7 @@
     "url": "https://gitlab.com/tposney/itemcollection/tree/master",
     "readme": "https://gitlab.com/tposney/itemcollection/raw/master/README.md",
     "manifest": "https://gitlab.com/tposney/itemcollection/raw/08x/package/module.json",
-    "download": "https://gitlab.com/tposney/itemcollection/raw/08x/package/itemcollection-v1.8.3.zip",
+    "download": "https://gitlab.com/tposney/itemcollection/raw/08x/package/itemcollection-v1.8.4.zip",
     "changelog": "https://gitlab.com/tposney/itemcollection/raw/master/Changelog.md",
     "minimumCoreVersion": "0.8.4",
     "compatibleCoreVersion": "0.8.8",
