@@ -27,6 +27,7 @@ import { ItemSheetShop } from './module/ItemSheetShop.js';
 import { fixupItemData, initHooks, readyHooks, setupHooks } from './module/Hooks';
 // import { installedModules, setupModules } from './module/setupModules';
 import {libWrapper} from './module/libs/shim.js'
+import { createSpellBookFromActor } from './module/util.js';
 
 export let debugEnabled = 0;
 // 0 = none, warnings = 1, debug = 2, all = 3
@@ -99,7 +100,8 @@ Hooks.once('ready', async () => {
     Shops: {
       createShop,
       createShopItem
-    }
+    },
+    createSpellBookFromActor: createSpellBookFromActor
   }
 });
 

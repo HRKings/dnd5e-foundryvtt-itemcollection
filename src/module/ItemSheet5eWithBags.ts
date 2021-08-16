@@ -225,7 +225,8 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
   }
 
   async _importItemFromCollection(collection, entryId) {
-    let item = await game.packs.get(collection).getEntity(entryId);
+    //@ts-ignore
+    let item = await game.packs.get(collection).getDocument(entryId);
     if (!item) return;
     //@ts-ignore toJSON
     return this.item.createEmbeddedDocuments("Item", item.data.toJSON())

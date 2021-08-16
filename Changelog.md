@@ -1,3 +1,18 @@
+## 1.8.5
+* Fix for a deprecation warning.
+* Added Itemcollection.createSpellbookFromActor(actor) which will create a new world item with all the spells from the designated actor.
+  * Call if from the console via Itemcollection.createSpellbookFromActor(game.actors.getName(" Name of the actor to use))
+  * create a macro with 
+  ```
+  Itemcollection.createSpellBookFromActor(token.actor)
+  ```
+  which will create a spellbook for the selected token.
+
+## 1.8.4
+seems broken
+## 1.8.3 
+version bump for 0.8.8
+
 ## 1.8.2
 * Disable import/export all due to occasional data corruption - will re-enable once fixed
 
