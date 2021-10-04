@@ -16,6 +16,19 @@
     "itemcollection.Purchase": "Purchase",
     "itemcollection.Markup": "Shop Premium %",
     "itemcollection.noSelection": "No Token/Actor selected",
-    "itemcollection.NotEnoghGold": " Not enough gold to buy"
+    "itemcollection.NotEnoghGold": " Not enough gold to buy",
 
+    "itemcollection.Name": "Name",
+    "itemcollection.itemsWeight": "Items Weight",
+    "itemcollection.Quantity": "Quantity",
+    "itemcollection.itemExport": "Export Item",
+    "itemcollection.itemExportB": "Export Items",
+    "itemcollection.itemExportAll": "Export All Items",
+    "itemcollection.itemImportAll": "Import All Items",
+    "itemcollection.itemCompactAll": "Compact All Items",
+    "itemcollection.totalGoldValue": "GP Value",
+    "itemcollection.All": "All",
+    "itemcollection.Pound": "lb",
+    "itemcollection.bagWeight": "Bag Weight",
+    "itemcollection.bagPrice": "Bag Price"
 }
