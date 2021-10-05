@@ -348,8 +348,10 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
   }
 
   async _exportAll(event) {
-    ui.notifications.warn("Disabled due to bugs - use drag and drop or single item export");
-    return;
+    if (!isNewerVersion(game.data.version, "0.8.9")) {
+      ui.notifications.warn("Disabled due to bugs - use drag and drop or single item export");
+      return;
+    }
     if (!this.item.parent) return;
     if (this.item.items.length === 0) return;
     const itemsData = duplicate(getProperty(this.item.data.flags, "itemcollection.contentsData") ?? []);
@@ -459,8 +461,10 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
   }
 
   async _importAllItemsFromParent(parent) {
-    ui.notifications.warn("Disabled due to bugs - use drag and drop");
-    return;
+    if (!isNewerVersion(game.data.version, "0.8.9")) {
+      ui.notifications.warn("Disabled due to bugs - use drag and drop");
+      return;
+    }
     if (!parent) return;
     const itemsToImport = [];
     for (let testItem of parent.items) {

@@ -18,6 +18,7 @@ export let initHooks = () => {
 
 export let setupHooks = () => {
   warn("Setup Hooks processing");
+  libWrapper.ignore_conflicts(MODULE_NAME, "VariantEncumbrance", "CONFIG.Item.documentClass.prototype.updateEmbeddedDocuments")
 
   libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.prototype.getEmbeddedDocument", getEmbeddedDocument, "MIXED")
   libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.prototype.createEmbeddedDocuments", createEmbeddedDocuments, "MIXED")

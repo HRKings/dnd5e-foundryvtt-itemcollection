@@ -1,3 +1,7 @@
+## 1.8.6
+* Fix for libwrapper conflict warning with Variant Encimbrance.
+* For foundry 0.9 removed restriciton on import/export all.
+
 ## 1.8.5
 * Fix for a deprecation warning.
 * Added Itemcollection.createSpellbookFromActor(actor) which will create a new world item with all the spells from the designated actor.

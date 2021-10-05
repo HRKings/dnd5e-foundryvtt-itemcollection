@@ -72,9 +72,9 @@ Hooks.once('init', async () => {
 Hooks.once('setup', function () {
 	// Do anything after initialization but before ready
   //@ts-ignore
-  Items.registerSheet("dnd5e", ItemSheet5eWithBags, {makeDefault: false, types:["backpack"]});
+  Items.registerSheet(game.system.id, ItemSheet5eWithBags, {makeDefault: false, types:["backpack"]});
   //@ts-ignore
-	Items.registerSheet("dnd5e", ItemSheetShop, { makeDefault: false, types:["backpack"]});
+	Items.registerSheet(game.system.id, ItemSheetShop, { makeDefault: false, types:["backpack"]});
 
   setupHooks();
 });

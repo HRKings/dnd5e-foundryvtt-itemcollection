@@ -4,7 +4,7 @@ export function  getActor() { // needed to control vaious initialisation in dnd5
 }
 
 export async function createEmbeddedDocuments(wrapped, embeddedName, data, context) {
-  if (this.type !== "backpack") return wrapped(embeddedName, data, context);
+  if (this.type !== "backpack" || embeddedName !== "Item") return wrapped(embeddedName, data, context);
   if (!Array.isArray(data)) data = [data];
   const currentItems = duplicate(getProperty(this, "data.flags.itemcollection.contentsData") ?? []);
   
@@ -42,7 +42,7 @@ export function getEmbeddedDocument(wrapped, embeddedName, id, {strict=false} = 
 }
 
 export async function updateEmbeddedDocuments(wrapped, embeddedName, data, options)  {
-  if (this.type !== "backpack") return wrapped(embeddedName, data, options);
+  if (this.type !== "backpack" || embeddedName !== "Item") return wrapped(embeddedName, data, options);
   const contained = getProperty(this, "data.flags.itemcollection.contentsData") ?? [];
   if (!Array.isArray(data)) data = [data];
   let updated = [];
@@ -57,7 +57,6 @@ export async function updateEmbeddedDocuments(wrapped, embeddedName, data, optio
   })
 
   if (updated.length > 0) {
-    // if (this.parent instanceof Item) await _updateContained.bind(this.parent)(this.id, contained)
     if (this.parent) {
       await this.parent.updateEmbeddedDocuments("Item", [{ "_id": this.id, "flags.itemcollection.contentsData": newContained}]);
     } else {
@@ -80,7 +79,7 @@ async function setCollection(item, contents) {
 }
 
 export async function deleteEmbeddedDocuments(wrapped, embeddedName, ids=[], options={}) {
-  if (!(this.type === "backpack" && embeddedName === "Item")) return wrapped(embeddedName, ids, options)
+  if (this.type !== "backpack" || embeddedName !== "Item") return wrapped(embeddedName, ids, options)
     const containedItems = getProperty(this.data, "flags.itemcollection.contentsData") ?? [];
     const newContained = containedItems.filter(itemData => !ids.includes(itemData._id))
     const deletedItems = this.items.filter(item => ids.includes(item.id));
