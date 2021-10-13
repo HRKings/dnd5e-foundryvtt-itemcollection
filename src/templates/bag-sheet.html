@@ -55,7 +55,7 @@
       {{#if data.currency}}
       <ol class="currency flexrow">
         {{#each data.currency as |v k|}}
-        <label>{{ lookup ../config.currencies k }}</label>
+        <label>{{ lookup ../currencies k }}</label>
         <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number" />
         {{/each}}
       </ol>

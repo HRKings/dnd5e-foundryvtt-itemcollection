@@ -66,6 +66,13 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
     data.flags = duplicate(item.data.flags);
     // setProperty(data.flags.itemcollection, "contentsData", await this.item.getFlag("itemcollection", "contentsData"));
 
+    //@ts-ignore
+    data.currencies = Object.entries(CONFIG.DND5E.currencies).reduce((obj, [k, c]) => {
+      //@ts-ignore
+      obj[k] = c.label;
+      return obj;
+    }, {});
+
 
     if (!hasProperty(data.flags, MODULE_NAME+".bagWeight"))
       setProperty(data.flags, MODULE_NAME+".bagWeight", 0);

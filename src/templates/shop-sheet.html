@@ -26,6 +26,7 @@
     </div>
   </header>
 
+
   {{!-- Item Sheet Navigation --}}
   <nav class="sheet-navigation tabs" data-group="primary">
     <a class="item active" data-tab="description">{{ localize "DND5E.Description" }}</a>
@@ -57,14 +58,16 @@
           data-dtype="Number" placeholder="">
       </div>
 
+      <div class="itemcollection-details">
       {{#if data.currency}}
       <ol class="currency flexrow">
         {{#each data.currency as |v k|}}
-        <label>{{ lookup ../config.currencies k }}</label>
+        <label>{{ lookup ../currencies k }}</label>
         <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number" />
         {{/each}}
       </ol>
       {{/if}}
+    </div>
       {{/if}}
 
       <li class="items-header flexrow" style="text-align: center;">

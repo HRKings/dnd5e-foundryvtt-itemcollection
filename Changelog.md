@@ -1,6 +1,9 @@
+### 1.8.7
+* Fix for dnd5e 1.5+ to fix currency display in bags.
+
 ## 1.8.6
-* Fix for libwrapper conflict warning with Variant Encimbrance.
-* For foundry 0.9 removed restriciton on import/export all.
+* Fix for libwrapper conflict warning with Variant Encumbrance.
+* For foundry 0.9 removed restriction on import/export all.
 
 ## 1.8.5
 * Fix for a deprecation warning.
