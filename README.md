@@ -23,8 +23,9 @@ Bags are backpack items (so can go anywhere a backpack item can, inventory, comp
 - ![Character Sheet](images/Character Sheet.png) 
 - Bags can contain any "items" (including spells, feats and other bags). Items can be added to a bag via drag and drop or the import button (which brings in the entire inventory). Items can be removed from a bag via drag and drop to a character inventory, bag, item directory or compendium according to permissions. Items can be exported to you inventory via buttons on the bag sheet.
 - Bags have a capacity indicating how much they can hold. A capacity of 0 means infinite. This can only be set by the GM. If you try and drop an from a bag or character inventory into a bag that is too heavy for the bag it will be added to your inventory instead.
+- There are two item sheets provided, ItemSheet5eWithBags for things like backpacks and bags of holding, ItemSheetShop which allows you to setup an item as a shop with markup/buying of items etc. 
 - Bags can be set to a fixed weight (as used in the encumberance calculation), think bag of holding (capacity 500, fixed weight 15) or a mule (fixed weight 0, capacity 690). 
-- Bags can be unequipped by players or GM, so that their reported weight drops to 0 in your inventory (only bags with a capacity other than 0 can be unequipped).
+- Bags can be unequipped by players or GM, so that their reported weight drops to 0 in your inventory (only bags with a capacity other than 0 can be unequipped).  
 - ![Multi Bags](images/Multi Bags.png)
 - You can create bags of standard equipment, e.g. adventurer's pack which can be dragged onto a character and imported into the inventory. The module ships with a sample compendium of a few bags that you might find useful.
 - At the GM's discretion (.e.g. module setting) items in bags can be converted to gold at a certain percentage of their value (another setting). The GM can choose to enable this when the party gets to a town to let them easily sell off accumulated loot.
@@ -81,6 +82,9 @@ This module uses the [libWrapper](https://github.com/ruipin/fvtt-lib-wrapper) li
 ### Installation Instructions
 
 To install a module, follow these instructions:
+Easiest solution is to install from the foundry modules page.
+
+Or
 
 1. [Download the zip](https://gitlab.com/tposney/itemcollection/raw/master/itemcollection.zip) file included in the module directory, or paste the url for the module.json into the install maodule option.
 2. Extract the included folder to `public/modules` in your Foundry Virtual Tabletop installation folder.
@@ -88,7 +92,9 @@ To install a module, follow these instructions:
 4. Since this module includes a compendium of items the first time you run foundry will complain and not let you open the compendium. Simply restart foundry a second time and all should be good.
 5. To create a bag from scratch, simple create any backpack item then set its iemsheet to be ItemSheet5eWithBags and all the necessary data will be created. I very strongly recommend that you **ONLY** do this for items you want to have as bags since once added the data is there forever. 
 
-Or use this URL to install via the module isntallation menu in Foundry: https://gitlab.com/tposney/itemcollection/raw/master/module.json
+Or
+
+Use this URL to install via the module isntallation menu in Foundry: "https://gitlab.com/tposney/itemcollection/raw/master/package/module.json"
 Once you have a bag (or drag one from the pre-created ones) the gm will see something like this. Players will only see the options available to them.
 
 ![All Options - GM view](images/All Options - GM view.png)

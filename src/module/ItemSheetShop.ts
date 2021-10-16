@@ -30,46 +30,43 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
   }
 
   async _onSubmit(event, {updateData=null, preventClose=false}={}) {
-    if (this.baseitem.type !== "backpack") updateData = expandObject({"flags.-=itemcollection": null});
+    if (this.item.type !== "backpack") updateData = expandObject({"flags.-=itemcollection": null});
       super._onSubmit(event, {"updateData": updateData, "preventClose": preventClose})
   }
 
-  async getData() {
-    const type = this.baseitem.data.type;
+  async getData(options) {
+    const type = this.item.data.type;
 
     if (!["backpack"].includes(type)) {
       ui.notifications.error(game.i18n.localize(MODULE_NAME+".wrongType"))
-      this.baseapps.options.editable = false;
-      return super.getData();
+      this.options.editable = false;
+      return super.getData(options);
     };
   
-    this.baseapps._sheetTab="details"
 
-    const item = this.baseapps.item;
-    var data:any = super.getData();
-    data.flags = item.data.flags
+    // this._sheetTab="details"
 
+    const item = this.item;
+    var data:any = await super.getData(options);
     if (!hasProperty(data.flags, MODULE_NAME+".markup"))
       setProperty(data.flags,MODULE_NAME+".markup", 10);
 
     let markup = (getProperty(data.flags,MODULE_NAME+".markup") || 0) / 100;
-    for (let i = 0; i < data.flags.itemcollection.contents.length; i++) {
-      data.flags.itemcollection.contents[i].data.marketPrice = Math.floor(data.flags.itemcollection.contents[i].data.price * (1+markup));
+    let nameFilter = item.data.flags.itemcollection.nameFilter;
+    for (let i = 0; i < data.flags.itemcollection.contentsData.length; i++) {
+      let itemData = data.flags.itemcollection.contentsData[i];
+      itemData.display = !nameFilter || (itemData.name.toLocaleLowerCase().includes(nameFilter))
+      if (!itemData.data.price)
+        itemData.data.marketPrice = "";
+      else
+        itemData.data.marketPrice = Math.ceil((itemData.data.price ?? 0) * (1+markup) * 100) / 100;
+      if (itemData.data.marketPrice > 10) itemData.data.marketPrice = Math.ceil(itemData.data.marketPrice)
     }
 
-    //this.baseapps.options.editable = this.baseapps.options.editable// && (!this.baseitem.actor || !this.baseitem.actor.token);
+    //this.baseapps.options.editable = this.baseapps.options.editable// && (!this.item.actor || !this.item.actor.token);
     return data;
   }
 
-
-  _getWeightChangeString() {
-  }
-
-  async updateWeight() { // do we need to do this
-    return super.updateWeight()
-  }
-
-  
   async _onDragItemStart(event) {
     event.stopPropagation();
     if (game.user.isGM) super._onDragItemStart(event);
@@ -79,66 +76,6 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
   canAdd(itemData) {
     return true;
   }
-
-  async _onDrop(event) {
-    event.stopPropagation();
-    event.preventDefault();
-    let data;
-    try {
-      data = JSON.parse(event.dataTransfer.getData('text/plain'));
-      if ( data.type !== "Item" ) {
-        console.log("ItemCollection | Bags only accept items");
-        return false;
-      }
-    }
-    catch (err) {
-      console.log("ItemCollection | drop error")
-      console.log(event.dataTransfer.getData('text/plain'));
-      console.log(err);
-      return false;
-    }
-    // Case 1 - Data explicitly provided
-    if ( data.data ) {
-      if ((this.baseitem.isOwned && data.actorId === this.baseitem.actor._id) && data.data._id === this.baseitem.data._id) {
-        console.log("ItemCollection | Cant drop on yourself");
-        ui.notifications.info(game.i18n.localize('itemcollection.ExtradimensionalVortex'));
-        throw new Error("Dragging bag onto istelf opens a planar vortex and you are sucked into it")
-      }
-      // We do't have the source actor. Only allow the drop from the same actor. *** TO DO ****
-      // drop from player characters or another bag.
-      let actor = (data.actorId) ? game.actors.get(data.actorId) : undefined;
-          // will fit in the bag so add it to the bag and delete from the owning actor if there is one.
-      let toDelete = data.data._id;
-      await this.createOwnedItem(data.data, {displaySheet: false});
-      if (actor && actor.data.type === "character") await actor.deleteOwnedItem(toDelete);
-      // do we pay for the item?
-      this.render(false); 
-      return false;
-    }
-
-    // Case 2 - Import from a Compendium pack
-    else if ( data.pack ) {
-      this._importItemFromCollection(data.pack, data.id);
-    }
-
-    // Case 3 - Import from World entity
-    else {
-      let item = game.items.get(data.id);
-      await this.createOwnedItem(duplicate(item.data), {});
-    }
-    return false;
-  }
-
-  async _importItemFromCollection(collection, entryId) {
-    const pack = game.packs.find(p => p.collection === collection);
-    if ( <string>pack.metadata.entity !== "Item" && <string>pack.metadata.entity !== "Spell") return;
-    return pack.getEntity(entryId).then(ent => {
-      // delete ent.data._id;
-        console.log(`ItemCollection | Importing Item ${ent.name} from ${collection}`);
-        this.createOwnedItem(duplicate(ent.data), {});
-    });
-  }
-
 
   // don't allow exporting for shops
   async _itemExport(event) {
@@ -163,17 +100,15 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
 
     // find the item
     let li = $(event.currentTarget).parents(".item");
-    let id = Number(li.attr("data-item-id"));
-    let items = duplicate(this.baseitem.getFlag(MODULE_NAME, "contents"));
-    let idx = items.findIndex(o => o._id === id);
-    if (idx === -1) throw new Error(`Item ${id} not found in Shop ${this.baseitem._id}`);
-    let itemData = items[idx];
+    let id = li.attr("data-item-id");
+    let itemData = this.item.items.get(id).data;
 
     // ask how many they want to buy
     let quantity = 1;
 
-    let markup = (getProperty(this.baseapps.object.data.flags,MODULE_NAME+".markup") || 0) / 100;
+    let markup = (getProperty(this.item.data.flags,MODULE_NAME+".markup") || 0) / 100;
     let goldValue = Math.floor((itemData.data.price * (1 + markup) * 10000))/ 10000 * quantity;
+    console.error("Gold value is ", goldValue)
     let currency = duplicate(actor.data.data.currency);
     // check if they have enough money to pay for it and the currency adjustments needed.
     let coinValue = currency ?  Object.keys(currency)
@@ -185,7 +120,7 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
     coinValue = (coinValue - goldValue) * 100; // how much we have left
     let conversion = {"cp" : 10, "sp": 10, "ep": 5, "gp": 10, "pp": 100000000000000};
     let newCurrency = ["cp", "sp", "gp", "pp"].reduce((nc,denom) => {
-      nc[denom] =  coinValue % conversion[denom];
+      nc[denom] =  Math.floor(coinValue % conversion[denom]);
       coinValue = denom !== "pp" ? Math.floor(coinValue / conversion[denom]) : coinValue;
       return nc;
     }, {"pp" : 0, "gp": 0, "ep": 0, "sp": 0, "cp": 0});
@@ -196,32 +131,31 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
 
     // add the item to the actor
     let doMerge = true;
-    let existing = actor.data.items.find(i=>i.name === itemData.name && i.type === itemData.type);
+    let existing = actor.items.find(i=>i.name === itemData.name && i.type === itemData.type);
+    console.error("existing is ", existing)
     if (existing && doMerge) {
-      actor.updateOwnedItem({"_id": existing._id, "data.quantity": existing.data.quantity + quantity});
+      await actor.updateEmbeddedDocuments("Item", [{"_id": existing.id, "data.quantity": (existing.data.data.quantity || 0) + quantity}]);
     } else {
       let newItem = duplicate(itemData);
       newItem.data.quantity = quantity;
-      await actor.createOwnedItem(newItem, {});
+      await actor.createEmbeddedDocuments("Item", [newItem]);
     }
     // add the gold to the shop
-    currency = duplicate(this.baseitem.data.data.currency);
+    currency = duplicate(this.item.data.data.currency);
     currency.gp += goldValue;
-    if (this.baseitem.isOwned) {
-      await this.baseitem.actor.updateOwnedItem({"_id": this.baseitem._id, "data.currency": currency})
-    } await this.baseitem.update({"data.currency": currency});
-    this.baseitem.data.data.currency.gp = currency.gp;
+    Hooks.once("updateItem", async () => {
+      itemData.data.quantity -= quantity;
+      if (itemData.data.quantity  <= 0) {
+        await this.item.deleteEmbeddedDocuments("Item", [id]);
+      } else {
+          await this.item.updateEmbeddedDocuments("Item", [{"_id": itemData._id, "data.quantity": itemData.data.quantity}]);
+      }
+    });
+    await this.item.update({"data.currency": currency})
 
     // remove the item from the shop deleting the item if the shop runs out
-    items[idx].data.quantity -= quantity;
-    if (items[idx].data.quantity  <= 0) {
-      await this.deleteOwnedItem(id);
-    } else {
-      if (this.baseitem.actor) {
-        await this.baseitem.updateParent(items);
-      } else (await this.baseitem.update({"flags.itemcollection.contents": items}));
-    }
-    this.render(false);
+    
+//    this.render(false);
   }
 
   async _exportAll(event) {
@@ -231,7 +165,7 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
   
   update(data,options) {
     //ev.stopPropagation();
-    this.baseitem.update(data, options)
+    this.item.update(data, options)
   }
   
   async _editItem(event) {
@@ -248,7 +182,7 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
     super.activateListeners(html);
 
     // Everything below is only needed if the sheet is editable
-    if ( !this.baseapps.options.editable ) return;
+    if ( !this.options.editable ) return;
 
     html.find("input").focusout(this._onUnfocus.bind(this));
 
@@ -256,8 +190,8 @@ export class ItemSheetShop extends ItemSheet5eWithBags {
       html.find('.item-delete').off().click(ev => {
         if (game.user.isGM) {
           let li = $(ev.currentTarget).parents(".item"),
-          itemId = Number(li.attr("data-item-id"));
-          this.deleteOwnedItem(itemId);
+          itemId = li.attr("data-item-id");
+          this.item.deleteEmbeddedDocuments("Item", [itemId]);
         }
       });
   }
