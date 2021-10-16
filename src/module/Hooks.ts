@@ -24,7 +24,12 @@ export let setupHooks = () => {
   libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.prototype.createEmbeddedDocuments", createEmbeddedDocuments, "MIXED")
   libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.prototype.deleteEmbeddedDocuments", deleteEmbeddedDocuments, "MIXED")
   libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.prototype.updateEmbeddedDocuments", updateEmbeddedDocuments, "MIXED")
-  libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.prototype.prepareEmbeddedEntities", prepareEmbeddedEntities, "WRAPPER");
+  //@ts-ignore
+  if (isNewerVersion(game.version, "0.9.0")) {
+    libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.prototype.prepareEmbeddedDocuments", prepareEmbeddedEntities, "WRAPPER");
+  } else {
+    libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.prototype.prepareEmbeddedEntities", prepareEmbeddedEntities, "WRAPPER");
+  }
   libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.prototype.getEmbeddedCollection", getEmbeddedCollection, "MIXED")
   libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.prototype.prepareDerivedData", prepareDerivedData, "WRAPPER");
 

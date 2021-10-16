@@ -1,20 +1,4 @@
-This module provides Items that are capable of holding other items; e.g. bags.  
-
-For **foundry 0.8.4** or later you must install via module.json and use:
-```
-https://gitlab.com/tposney/itemcollection/raw/08x/package/module.json
-```
-The 0.8.x version as been an almost complete rewrite of the module, so there might be some teething issues. Notable changes:
-* item weight is correctly updated in the actor inventory as items are added/deleted.
-* Gold value and item price is updated correctly.
-### v1.3.4
-You must uninstall and reinstall the module to get the latest version if you are on a version before 1.3.4
-
-### Version 1.2.10 Comaptible with 0.4.5 and dnd0.80.
-1. No specific migration strep required from 0.4.3
-2. Added a feature that allows you to always add ropes, lanterns and mess kits to bags (they are tied on the side). The weight of the bag will include the item's weight. Thanks to @BrotherSharp for the idea.
-3.  See notes section if you receive "Bags must be of type backpack" error messages.
-4. Includes ja.json localization. Thanks to @Asami for the translations.
+This module provides Items that are capable of holding other items; e.g. bags and shops.
 
 
 ### Main features:
@@ -24,8 +8,9 @@ Bags are backpack items (so can go anywhere a backpack item can, inventory, comp
 - ![Character Sheet](images/Character Sheet.png) 
 - Bags can contain any "items" (including spells, feats and other bags). Items can be added to a bag via drag and drop or the import button (which brings in the entire inventory). Items can be removed from a bag via drag and drop to a character inventory, bag, item directory or compendium according to permissions. Items can be exported to you inventory via buttons on the bag sheet.
 - Bags have a capacity indicating how much they can hold. A capacity of 0 means infinite. This can only be set by the GM. If you try and drop an from a bag or character inventory into a bag that is too heavy for the bag it will be added to your inventory instead.
+- There are two item sheets provided, ItemSheet5eWithBags for things like backpacks and bags of holding, ItemSheetShop which allows you to setup an item as a shop with markup/buying of items etc. 
 - Bags can be set to a fixed weight (as used in the encumberance calculation), think bag of holding (capacity 500, fixed weight 15) or a mule (fixed weight 0, capacity 690). 
-- Bags can be unequipped by players or GM, so that their reported weight drops to 0 in your inventory (only bags with a capacity other than 0 can be unequipped).
+- Bags can be unequipped by players or GM, so that their reported weight drops to 0 in your inventory (only bags with a capacity other than 0 can be unequipped).  
 - ![Multi Bags](images/Multi Bags.png)
 - You can create bags of standard equipment, e.g. adventurer's pack which can be dragged onto a character and imported into the inventory. The module ships with a sample compendium of a few bags that you might find useful.
 - At the GM's discretion (.e.g. module setting) items in bags can be converted to gold at a certain percentage of their value (another setting). The GM can choose to enable this when the party gets to a town to let them easily sell off accumulated loot.

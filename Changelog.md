@@ -1,3 +1,8 @@
+### 1.8.8
+* Fix for foundry 0.9.226+
+* Import All/Export All enabled in foundry 0.9+
+* Fix currency display in shops as well.
+
 ### 1.8.7
 * Fix for dnd5e 1.5+ to fix currency display in bags.
 

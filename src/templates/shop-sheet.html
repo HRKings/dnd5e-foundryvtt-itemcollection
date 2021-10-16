@@ -59,15 +59,15 @@
       </div>
 
       <div class="itemcollection-details">
-      {{#if data.currency}}
-      <ol class="currency flexrow">
-        {{#each data.currency as |v k|}}
-        <label>{{ lookup ../currencies k }}</label>
-        <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number" />
-        {{/each}}
-      </ol>
-      {{/if}}
-    </div>
+        {{#if data.currency}}
+        <ol class="currency flexrow">
+          {{#each data.currency as |v k|}}
+          <label>{{ lookup ../currencies k }}</label>
+          <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number" />
+          {{/each}}
+        </ol>
+        {{/if}}
+      </div>
       {{/if}}
 
       <li class="items-header flexrow" style="text-align: center;">

@@ -107,7 +107,7 @@ export function getEmbeddedCollection(wrapped, type) {
 
 export function prepareDerivedData(wrapped) {
   wrapped();
-  if (!(this instanceof Item && this.type === "backpack")) return;
+  if (!(this instanceof Item && this.type === "backpack" && this.data.flags.itemcollection)) return;
   this.data.data.weight = this.calcWeight();
   this.data._source.data.weight = this.calcWeight();
   this.data.data.price = this.calcPrice();
@@ -174,14 +174,15 @@ export async function _onCreateDocuments(wrapped, items, context) {
 }
 
 export function calcWeight() {
-  if (this.type !== "backpack") return _calcItemWeight(this);
+  if (this.type !== "backpack" || !this.data.flags.itemcollection) return this.calcItemWeight();
+  if (this.parent instanceof Actor && !this.data.data.equipped) return 0;
   const weightless = getProperty(this, "data.data.capacity.weightless") ?? false;
   if (weightless) return getProperty(this, "data.flags.itemcollection.bagWeight")  ?? 0;
   return this.calcItemWeight() + (getProperty(this, "data.flags.itemcollection.bagWeight")  ?? 0);
 }
 
 export function calcItemWeight() {
-  if (this.type !== "backpack") return _calcItemWeight(this);
+  if (this.type !== "backpack" || this.items === undefined) return _calcItemWeight(this);
   let weight = this.items.reduce((acc, item) => {
       return acc + (item.calcWeight() ?? 0);
    }, (this.type === "backpack" ? 0 : _calcItemWeight(this)) ?? 0);
@@ -208,7 +209,7 @@ export function _calcItemWeight(item) {
   return Math.round(weight * quantity * 100) / 100;
 }
 export function calcPrice() {
-  if (this.type !== "backpack") return _calcItemPrice(this);
+  if (this.type !== "backpack" || this.items === undefined) return _calcItemPrice(this);
   const currency = this.data.data.currency ?? {};
   const coinValue =  currency ? Object.keys(currency)
       .reduce((val, denom) => val += {"pp" :10, "gp": 1, "ep": 0.5, "sp": 0.1, "cp": 0.01}[denom] * currency[denom], 0) : 0;
