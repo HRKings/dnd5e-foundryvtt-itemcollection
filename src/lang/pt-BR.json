@@ -16,6 +16,19 @@
     "itemcollection.purchase": "Compra",
     "itemcollection.Markup": "Loja Premium %",
     "itemcollection.noSelection": "Sem Token/Ator selecionado",
-    "itemcollection.NotEnoghGold": " Não tem moedas suficientes para a compra."
+    "itemcollection.NotEnoghGold": " Não tem moedas suficientes para a compra.",
 
+    "itemcollection.Name": "Nome",
+    "itemcollection.itemsWeight": "Peso do Conteúdo",
+    "itemcollection.Quantity": "Quantidade",
+    "itemcollection.itemExport": "Tirar do Recipiente",
+    "itemcollection.itemExportB": "Tirar Itens Deste Recipiente",
+    "itemcollection.itemExportAll": "Tirar Tudo do Recipiente",
+    "itemcollection.itemImportAll": "Importar Tudo",
+    "itemcollection.itemCompactAll": "Compactar Tudo",
+    "itemcollection.totalGoldValue": "Valor em PO",
+    "itemcollection.All": "Tudo",
+    "itemcollection.Pound": "kg",
+    "itemcollection.bagWeight": "Peso do Recipiente",
+    "itemcollection.bagPrice": "Preço do Recipiente"
 }

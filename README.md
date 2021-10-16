@@ -1,4 +1,19 @@
-This module provides Items that are capable of holding other items; e.g. bags and shops.
+This module provides Items that are capable of holding other items; e.g. bags.
+
+## I've just updated and all the items in my bags have disappeared....
+
+The version for foundry 0.8.x has been an almost complete rewrite of the module, so there might be some teething issues.
+
+Please see the [1.8.x changelog](https://gitlab.com/tposney/itemcollection/-/blob/08x/Changelog.md) - particularly the 1.8.0 detials - for more information and migration steps
+
+v1.3.4
+You must uninstall and reinstall the module to get the latest version if you are on a version before 1.3.4
+
+### Version 1.2.10 Comaptible with 0.4.5 and dnd0.80.
+1. No specific migration strep required from 0.4.3
+2. Added a feature that allows you to always add ropes, lanterns and mess kits to bags (they are tied on the side). The weight of the bag will include the item's weight. Thanks to @BrotherSharp for the idea.
+3.  See notes section if you receive "Bags must be of type backpack" error messages.
+4. Includes ja.json localization. Thanks to @Asami for the translations.
 
 
 ### Main features:
