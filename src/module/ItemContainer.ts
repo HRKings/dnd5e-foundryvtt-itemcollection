@@ -229,7 +229,6 @@ export function getChatData(wrapped, ...args) {
       itemString = `<tr><td>${item.name}</td><td>${item.getChatData().description.value}</td></tr>`;
     else 
       itemString = `<tr><td>${item.name}</td><td>${item.data.data.quantity ?? ""}</td><td>${item.data.data.weight??""}</td></tr>`;
-    console.error("item string is ", itemString)
     chatData.description.value += itemString;
   }
   chatData.description.value += "</table>"
