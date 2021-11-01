@@ -30,7 +30,9 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
       width: 570,
       height: 500,
       //@ts-ignore
-      showUnpreparedSpells: true
+      showUnpreparedSpells: true,
+      tabs: [{navSelector: ".tabs", contentSelector: ".sheet-body", initial: "details"}]
+
     });
     return options;
   }

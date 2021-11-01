@@ -1,7 +1,16 @@
+### 1.8.10
+* Changed default tab on item collection sheet to be the contents sheet, rather than the description sheet.
+* New setting "Display Description". When true the item description is displayed in the inventory and chat data. When false the contents of the item is displayed instead, showing name, quantity and weight. You can't edit items from this display, but you can at least see what is in the bag.
+
+### 1.8.9
+* Fix for currency display
+* Fix currency display in shops as well.
+* Put back functionality so that itemcollection bags that are not equipped weigh nothing.
+
 ### 1.8.8
 * Fix for foundry 0.9.226+
 * Import All/Export All enabled in foundry 0.9+
-* Fix currency display in shops as well.
+
 
 ### 1.8.7
 * Fix for dnd5e 1.5+ to fix currency display in bags.

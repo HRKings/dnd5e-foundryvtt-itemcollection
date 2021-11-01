@@ -1,7 +1,7 @@
 import { warn, error, debug, i18n } from "../ItemCollection";
 import { MODULE_NAME } from "./settings";
 import {libWrapper} from './libs/shim.js'
-import { getEmbeddedDocument, createEmbeddedDocuments, deleteEmbeddedDocuments, updateEmbeddedDocuments, prepareEmbeddedEntities, getEmbeddedCollection, _onCreateDocuments, calcPrice, calcWeight, containedItemCount, deleteDocuments, getActor, updateDocuments, calcItemWeight, _update, _delete, prepareDerivedData, isEmbedded } from "./ItemContainer";
+import { getEmbeddedDocument, createEmbeddedDocuments, deleteEmbeddedDocuments, updateEmbeddedDocuments, prepareEmbeddedEntities, getEmbeddedCollection, _onCreateDocuments, calcPrice, calcWeight, containedItemCount, deleteDocuments, getActor, updateDocuments, calcItemWeight, _update, _delete, prepareDerivedData, isEmbedded, getChatData } from "./ItemContainer";
 
 
 export let readyHooks = async () => {
@@ -41,6 +41,7 @@ export let setupHooks = () => {
   libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass._onCreateDocuments", _onCreateDocuments, "MIXED")
   libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.deleteDocuments", deleteDocuments, "MIXED")
   libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.updateDocuments", updateDocuments, "MIXED")
+  libWrapper.register(MODULE_NAME, "CONFIG.Item.documentClass.prototype.getChatData", getChatData, "WRAPPER")
 
   //@ts-ignore documentClass
   CONFIG.Item.documentClass.prototype.calcWeight = calcWeight;

@@ -30,5 +30,8 @@
     "itemcollection.All": "All",
     "itemcollection.Pound": "lb",
     "itemcollection.bagWeight": "Bag Weight",
-    "itemcollection.bagPrice": "Bag Price"
+    "itemcollection.bagPrice": "Bag Price",
+    "itemcollection.displayDescription.Name": "Display Item Description",
+    "itemcollection.displayDescription.Hint": "Display the bag description if true, and the item contents if false in chat and inventory display"
+
 }

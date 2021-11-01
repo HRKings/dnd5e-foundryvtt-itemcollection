@@ -18,6 +18,12 @@ export const MODULE_NAME = 'itemcollection';
   return canvas;
 }
 
+export var displayDescription;
+
+export function fetchParams() {
+  displayDescription = game.settings.get(MODULE_NAME, "displayDescription") ?? true;
+}
+
 export const registerSettings = function () {
     setup(ItemCollectionTemplate);
 }
@@ -43,6 +49,13 @@ let ItemCollectionTemplate = (function() {
       itemDetailsTemplate:`/modules/${MODULE_NAME}/templates/shop-sheet.html`,
     },
     settings: [
+      {
+        name: "displayDescription",
+        scope: "world",
+        default: true,
+        type: Boolean,
+        onChange: fetchParams
+      },
       {
         name: "goldConversion",
         scope: "world",
@@ -81,7 +94,7 @@ let ItemCollectionTemplate = (function() {
 function setup(templateSettings) {
 	templateSettings.settings().forEach(setting => {
 		let options:ClientSettings.PartialSetting = {
-       name: i18n(`${templateSettings.name()}.${setting.name}.Name`),
+      name: i18n(`${templateSettings.name()}.${setting.name}.Name`),
       hint: i18n(`${templateSettings.name()}.${setting.name}.Hint`),
 			scope: setting.scope,
 			config: true,
@@ -91,6 +104,8 @@ function setup(templateSettings) {
 		if (setting.choices) {
       options.choices = setting.choices;
     }
+    if (setting.onChange) options.onChange = setting.onChange;
 		game.settings.register(templateSettings.name(), setting.name, options);
 	});
+  fetchParams();
 }

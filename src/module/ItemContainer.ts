@@ -1,3 +1,5 @@
+import { displayDescription } from "./settings";
+
 export function  getActor() { // needed to control vaious initialisation in dnd5e
   if (this.parent instanceof Item) return null;
   return this.parent;
@@ -215,4 +217,13 @@ export function calcPrice() {
       .reduce((val, denom) => val += {"pp" :10, "gp": 1, "ep": 0.5, "sp": 0.1, "cp": 0.01}[denom] * currency[denom], 0) : 0;
   const price = this.items.reduce((acc, item) => acc + (item.calcPrice() ?? 0), _calcItemPrice(this) || 0);
   return Math.round((price + coinValue) * 100) / 100;
+}
+
+export function getChatData(wrapped, ...args) {
+  const chatData = wrapped(...args);
+  if (displayDescription || this.type !== "backpack" || this.items === undefined ) return chatData;
+  chatData.description.value = "<table>"
+    + (this.items?.map(i=> `<tr><td>${i.name}</td><td>${i.data.data.quantity ?? ""}</td><td>${i.data.data.weight??""}</td></tr>`).join("")) 
+    + "</table>"
+  return chatData;
 }
