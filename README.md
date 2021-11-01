@@ -39,6 +39,8 @@ Bags are backpack items (so can go anywhere a backpack item can, inventory, comp
 - Due to my ineptitude ONLY bags ownd by Actors or unowned can be editied. To change such a bag drag it to the items directory, change it there and drag back to the token.
 - Items dragged from a characters inventory and dropped into a bag are deleted from the characters inventory, so that character only has a single copy of the item.
 
+### Configuration Settings.
+The setting "Display Description", when true, display the item description in the inventory and chat data. When false the contents of the item is displayed instead, showing name, quantity and weight. You can't edit items from this display, but you can at least see what is in the bag.
 
 ### Notes
 - The UI is pretty rough at the moment, it will be improved.

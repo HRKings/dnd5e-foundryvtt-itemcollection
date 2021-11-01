@@ -1,3 +1,6 @@
+### 1.8.11
+* Added display of bags in bags for contents display.
+
 ### 1.8.10
 * Changed default tab on item collection sheet to be the contents sheet, rather than the description sheet.
 * New setting "Display Description". When true the item description is displayed in the inventory and chat data. When false the contents of the item is displayed instead, showing name, quantity and weight. You can't edit items from this display, but you can at least see what is in the bag.

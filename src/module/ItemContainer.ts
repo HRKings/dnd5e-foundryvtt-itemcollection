@@ -223,7 +223,15 @@ export function getChatData(wrapped, ...args) {
   const chatData = wrapped(...args);
   if (displayDescription || this.type !== "backpack" || this.items === undefined ) return chatData;
   chatData.description.value = "<table>"
-    + (this.items?.map(i=> `<tr><td>${i.name}</td><td>${i.data.data.quantity ?? ""}</td><td>${i.data.data.weight??""}</td></tr>`).join("")) 
-    + "</table>"
+  for (let item of this.items) {
+    let itemString = "";
+    if (item.type === "backpack" && item.items !== undefined) 
+      itemString = `<tr><td>${item.name}</td><td>${item.getChatData().description.value}</td></tr>`;
+    else 
+      itemString = `<tr><td>${item.name}</td><td>${item.data.data.quantity ?? ""}</td><td>${item.data.data.weight??""}</td></tr>`;
+    console.error("item string is ", itemString)
+    chatData.description.value += itemString;
+  }
+  chatData.description.value += "</table>"
   return chatData;
 }
