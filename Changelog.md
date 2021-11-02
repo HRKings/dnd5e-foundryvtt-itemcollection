@@ -1,3 +1,9 @@
+### 1.8.13
+* reinstate special items ("Lantern", "Hempen Rope", "Silk Rope", "Mess Kit", "Bedroll") not affecting backpack capacity, with the logic that they are tied to the outside of the backpack. They still impact the weight of the backpack.
+
+### 1.8.12
+* remove debug left in
+
 ### 1.8.11
 * Added display of bags in bags for contents display.
 

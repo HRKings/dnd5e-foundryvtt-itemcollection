@@ -146,7 +146,7 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
       const itemCount = this.item.containedItemCount()
       return itemCount + itemQuantity <= bagCapacity;
     }
-    let newWeight = this.item.calcItemWeight() + (itemData.data.weight ?? 0) * itemQuantity;
+    let newWeight = this.item.calcItemWeight({ignoreItems: canAlwaysAddToBag, ignoreTypes: canAlwaysAddToBagTypes  }) + (itemData.data.weight ?? 0) * itemQuantity;
     return bagCapacity >= newWeight;
   }
 

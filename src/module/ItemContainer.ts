@@ -175,18 +175,20 @@ export async function _onCreateDocuments(wrapped, items, context) {
   return cls.createDocuments(toCreate, context);
 }
 
-export function calcWeight() {
+export function calcWeight({ignoreItems, ignoreTypes} = {ignoreItems: undefined, ignoreTypes: undefined}) {
   if (this.type !== "backpack" || !this.data.flags.itemcollection) return this.calcItemWeight();
   if (this.parent instanceof Actor && !this.data.data.equipped) return 0;
   const weightless = getProperty(this, "data.data.capacity.weightless") ?? false;
   if (weightless) return getProperty(this, "data.flags.itemcollection.bagWeight")  ?? 0;
-  return this.calcItemWeight() + (getProperty(this, "data.flags.itemcollection.bagWeight")  ?? 0);
+  return this.calcItemWeight({ignoreItems, ignoreTypes}) + (getProperty(this, "data.flags.itemcollection.bagWeight")  ?? 0);
 }
 
-export function calcItemWeight() {
+export function calcItemWeight({ignoreItems, ignoreTypes} = {ignoreItems: undefined, ignoreTypes: undefined}) {
   if (this.type !== "backpack" || this.items === undefined) return _calcItemWeight(this);
   let weight = this.items.reduce((acc, item) => {
-      return acc + (item.calcWeight() ?? 0);
+    if (ignoreTypes?.some(name=>item.name.includes(name))) return acc;
+    if (ignoreItems?.includes(item.name)) return acc;
+    return acc + (item.calcWeight() ?? 0);
    }, (this.type === "backpack" ? 0 : _calcItemWeight(this)) ?? 0);
    const currency = this.data.data.currency ?? {};
    const numCoins =  currency ? Object.keys(currency).reduce((val, denom) => val + currency[denom], 0) : 0;
