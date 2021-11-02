@@ -88,7 +88,7 @@
     "download": "https://gitlab.com/tposney/itemcollection/raw/master/package/itemcollection-v1.8.13.zip",
     "changelog": "https://gitlab.com/tposney/itemcollection/raw/master/Changelog.md",
     "minimumCoreVersion": "0.8.4",
-    "compatibleCoreVersion": "0.9.224",
+    "compatibleCoreVersion": "0.9.226",
     "minimumSystemVersion": "1.5.0",
     "manifestPlusVersion": "1.0.0",
     "dependencies": [
