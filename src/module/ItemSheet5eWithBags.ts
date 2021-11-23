@@ -8,8 +8,14 @@ let canAlwaysAddToBag;
 let canAlwaysAddToBagTypes;
 
 Hooks.once("ready", () => {
+  if (game.i18n.localize(MODULE_NAME+".canAlwaysAddToBagv9") !== MODULE_NAME+".canAlwaysAddToBagv9") {
+    canAlwaysAddToBag = game.i18n.localize(MODULE_NAME+".canAlwaysAddToBagv9").split(",");
+    canAlwaysAddToBagTypes = game.i18n.localize(MODULE_NAME+".canAlwaysAddToBagTypesv9").split("'");
+  
+  } else {
   canAlwaysAddToBag = game.i18n.localize(MODULE_NAME+".canAlwaysAddToBag");
   canAlwaysAddToBagTypes = game.i18n.localize(MODULE_NAME+".canAlwaysAddToBagTypes");
+  }
 });
 
 export class ItemSheet5eWithBags extends ItemSheet5e {

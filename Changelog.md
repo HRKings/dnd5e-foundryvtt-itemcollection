@@ -1,3 +1,6 @@
+## 1.8.14
+* Fix for foundry 9.231 induced error.
+
 ### 1.8.13
 * reinstate special items ("Lantern", "Hempen Rope", "Silk Rope", "Mess Kit", "Bedroll") not affecting backpack capacity, with the logic that they are tied to the outside of the backpack. They still impact the weight of the backpack.
 
