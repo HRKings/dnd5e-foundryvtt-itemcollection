@@ -31,12 +31,14 @@ export function isEmbedded() {
     return (this.parent !== null) && (this.documentName in this.parent.constructor.metadata.embedded);
   return (this.parent !== null);
 }
+
 export  async function createDocuments(wrapped, data=[], context={parent: {}, pack: {}, options: {}}) {
   const {parent, pack, options} = context;
   if (!(this.type === "backpack" && parent instanceof Item)) return wrapped(data, context);
   //@ts-ignore createEmbeddedDocuments
   await parent.createEmbeddedDocuments("Item", data, options)
 }
+
 
 export function getEmbeddedDocument(wrapped, embeddedName, id, {strict=false} = {}) {
   if (this.type !== "backpack") return wrapped(embeddedName, id, {strict});
@@ -143,14 +145,13 @@ export function prepareEmbeddedEntities(wrapped) {
   });
 }
 
-export async function _update(wrapped, data) {
-  if (!(this.parent instanceof Item)) return wrapped(data);
+export async function _update(wrapped, data, context) {
+  if (!(this.parent instanceof Item)) return wrapped(data, context);
   //@ts-ignore foundry
   data = foundry.utils.expandObject(data);
   data._id = this.id;
   await this.parent.updateEmbeddedDocuments("Item", [data]);
   this.render(false, { action: "update", data: data });
-
 }
 
 export async function _delete(wrapped, data) {
@@ -159,7 +160,9 @@ export async function _delete(wrapped, data) {
 }
 
 export async function _onCreateDocuments(wrapped, items, context) {
-  if (!(context.parent instanceof Item && this.type === "backpack")) return wrapped(items, context);
+  if (!(context.parent instanceof Item)) return wrapped(items, context);
+  if (items.filter(item => item.type === "backpack").length === 0) return wrapped(items, context);
+  // if (!(context.parent instanceof Item && this.type === "backpack")) return wrapped(items, context);
   const toCreate = [];
   for ( let item of items ) {
     for ( let e of item.effects ) {

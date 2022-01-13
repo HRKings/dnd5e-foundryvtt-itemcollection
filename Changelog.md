@@ -1,3 +1,6 @@
+## 1.8.16
+* Fix form importing items.
+
 ## 1.8.14
 * Fix for foundry 9.231 induced error.
 
