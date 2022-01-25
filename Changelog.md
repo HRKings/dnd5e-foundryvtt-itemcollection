@@ -1,5 +1,8 @@
+## 1.8.17
+* Added fr.json
+
 ## 1.8.16
-* Fix form importing items.
+* Fix for importing items.
 
 ## 1.8.14
 * Fix for foundry 9.231 induced error.
