@@ -1,6 +1,6 @@
 ## 1.8.18
 * respect game settings to not include currency weight when calculating bag weight.
-
+* realign the headings to look a little better.
 ## 1.8.17
 * Added fr.json
 
