@@ -193,6 +193,7 @@ export function calcItemWeight({ignoreItems, ignoreTypes} = {ignoreItems: undefi
     if (ignoreItems?.includes(item.name)) return acc;
     return acc + (item.calcWeight() ?? 0);
    }, (this.type === "backpack" ? 0 : _calcItemWeight(this)) ?? 0);
+   if (!game.settings.get("dnd5e", "currencyWeight")) return Math.round(weight);
    const currency = this.data.data.currency ?? {};
    const numCoins =  currency ? Object.keys(currency).reduce((val, denom) => val + currency[denom], 0) : 0;
    return Math.round(weight + numCoins / 50);

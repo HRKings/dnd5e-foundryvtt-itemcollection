@@ -9,8 +9,8 @@ let canAlwaysAddToBagTypes;
 
 Hooks.once("ready", () => {
   if (game.i18n.localize(MODULE_NAME+".canAlwaysAddToBagv9") !== MODULE_NAME+".canAlwaysAddToBagv9") {
-    canAlwaysAddToBag = game.i18n.localize(MODULE_NAME+".canAlwaysAddToBagv9").split(",");
-    canAlwaysAddToBagTypes = game.i18n.localize(MODULE_NAME+".canAlwaysAddToBagTypesv9").split("'");
+    canAlwaysAddToBag = game.i18n.localize(MODULE_NAME+".canAlwaysAddToBagv9").split(",").map(s=>s.trim());
+    canAlwaysAddToBagTypes = game.i18n.localize(MODULE_NAME+".canAlwaysAddToBagTypesv9").split("'").map(s=>s.trim());
   
   } else {
   canAlwaysAddToBag = game.i18n.localize(MODULE_NAME+".canAlwaysAddToBag");
@@ -401,13 +401,13 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
   }
   
   async _editItem(ev) {
+    ev.preventDefault();
     const li = $(event.currentTarget).parents(".item");
     const id = li.attr("data-item-id");
     let item = this.item.items.get(id);
     if (!item) throw new Error(`Item ${id} not found in Bag ${this.item._id}`);
     // let item = this.items[idx];
-    item.sheet.render(true);
-    return;
+    return item.sheet.render(true);
   }
 
   _onItemSummary(event) {
