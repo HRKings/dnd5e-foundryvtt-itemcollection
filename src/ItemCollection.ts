@@ -72,9 +72,9 @@ Hooks.once('init', async () => {
 Hooks.once('setup', function () {
 	// Do anything after initialization but before ready
   //@ts-ignore
-  Items.registerSheet(game.system.id, ItemSheet5eWithBags, {makeDefault: false, types:["backpack"]});
+  Items.registerSheet(game.system.id, ItemSheet5eWithBags, { makeDefault: false, types: ["backpack"], label: i18n('itemcollection.ItemSheet5eWithBags') });
   //@ts-ignore
-	Items.registerSheet(game.system.id, ItemSheetShop, { makeDefault: false, types:["backpack"]});
+	Items.registerSheet(game.system.id, ItemSheetShop, { makeDefault: false, types: ["backpack"], label: i18n('itemcollection.ItemSheetShop') });
 
   setupHooks();
 });
@@ -108,8 +108,8 @@ Hooks.once('ready', async () => {
 export async function migrateItems(items, name = "") {
   let promises = [];
   for (let item of items) {
-    if (item.type === "backpack" 
-        && item.data.flags?.itemcollection 
+    if (item.type === "backpack"
+        && item.data.flags?.itemcollection
         && item.data.flags?.itemcollection?.version !== "0.8.6") {
       console.error(`Migrating ${name}: Item ${item.name}`)
       let itemcontents = duplicate(item.data.flags?.itemcollection?.contents || []);
@@ -194,11 +194,11 @@ export async function createShop(compendiumName, shopName, conditions: {}, {minV
   let itemsToAdd = compendium.filter(item => chooseCondition(item, conditions))
       .map(item => item.data)
       .map(itemData => {
-        itemData.data.quantity = Math.max(itemData.data.quantity || 0, minQuantity); 
+        itemData.data.quantity = Math.max(itemData.data.quantity || 0, minQuantity);
         return itemData
       })
       .map(itemData => {
-        if (itemData.data.price && minValue > (itemData.data.quantity * itemData.data.price)) { 
+        if (itemData.data.price && minValue > (itemData.data.quantity * itemData.data.price)) {
           itemData.data.quantity = Math.ceil(minValue/itemData.data.price);
         }
         return itemData;
@@ -221,8 +221,8 @@ export function chooseCondition(item, {rarity = "", type = "", consumableType = 
 
 export async function createShopItem(shopName) {
   return Item.create({
-    name: shopName, 
-    type: "backpack", 
+    name: shopName,
+    type: "backpack",
     "flags.core.sheetClass": "dnd5e.ItemSheetShop",
     img: "icons/environment/settlement/market-stall.webp",
     "flags.itemcollection.contentsData": [],
