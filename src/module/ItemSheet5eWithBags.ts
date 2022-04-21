@@ -108,6 +108,7 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
     for (let i of data.flags.itemcollection.contentsData){
       i.isBackpack = i.type === "backpack"
       i.isSpell = i.type === "spell";
+      i.totalWeight = i.data.weight * i.data.quantity;
     }
     data.canImportExport = item.parent !== undefined;
     data.isOwned = item.parent !== undefined;
