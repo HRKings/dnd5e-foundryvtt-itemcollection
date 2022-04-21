@@ -65,6 +65,7 @@
         <div class="item-name flexrow">{{localize 'itemcollection.Name'}}</div>
         <div class="item-detial">{{localize 'itemcollection.Quantity'}}</div>
         <div class="item-detail item-weight">{{localize "DND5E.Weight"}}</div>
+        <div class="item-detail item-weight">{{localize "DND5E.Weight"}} (Stack)</div>
         <div class=item-control>
           {{#if isOwned}}
           <a class="item-control item-export-all" title="{{localize 'itemcollection.itemExportAll'}}"><i class="fas fa-minus"> {{localize 'itemcollection.All'}}</i></a>
@@ -88,6 +89,7 @@
           </div>
           <div>{{item.data.quantity}}</div>
           <div>{{item.data.weight}} {{../weightUnit}}</div>
+          <div>{{item.totalWeight}} {{../weightUnit}}</div>
 
           <div class="item-controls flexrow">
             <a class="item-control item-edit" title='{{localize "DND5E.ItemEdit"}}'><i class="fas fa-edit"></i></a>
