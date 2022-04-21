@@ -42,7 +42,7 @@
     <div class="tab details itemcollection-details" data-group="primary" data-tab="details">
       <h3 class="form-header">{{localize 'DND5E.ItemContainerDetails'}} {{parentName}}</h3>
 
-      <div class="form-group compressed">
+      <div class="form-group compressed" style="flex-direction: column; padding-bottom: 1.5rem;">
         <label class="checkbox">
           <input type="checkbox" name="data.capacity.weightless" {{checked data.capacity.weightless}}>
           {{localize 'DND5E.ItemContainerWeightless'}}
@@ -62,7 +62,7 @@
       {{/if}}
 
       <li class="items-header flexrow" style="text-align: center;">
-        <div class="item-name flexrow">{{localize 'itemcollection.Name'}}</div>
+        <div class="item-name flexrow" style="flex-grow: 4;">{{localize 'itemcollection.Name'}}</div>
         <div class="item-detial">{{localize 'itemcollection.Quantity'}}</div>
         <div class="item-detail item-weight">{{localize "DND5E.Weight"}}</div>
         <div class="item-detail item-weight">{{localize "DND5E.Weight"}} (Stack)</div>
