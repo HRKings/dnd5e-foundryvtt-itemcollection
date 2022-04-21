@@ -121,8 +121,12 @@ export class ItemSheet5eWithBags extends ItemSheet5e {
       data.parentName += `<- ${parent.name} `
       parent = parent.parent;
     }
-    if (data.parentName.length > 0) data.parentName = `(${data.parentName})`
-    
+    if (data.parentName.length > 0) data.parentName = `(${data.parentName})`;
+
+    data.weightUnit = game.settings.get("dnd5e", "metricWeightUnits")
+          ? game.i18n.localize("DND5E.AbbreviationKgs")
+          : game.i18n.localize("DND5E.AbbreviationLbs");
+
     return data;
   }
 
