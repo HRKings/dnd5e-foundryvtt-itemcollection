@@ -61,7 +61,7 @@
       </ol>
       {{/if}}
 
-      <li class="items-header flexrow" style="text-align: right;">
+      <li class="items-header flexrow" style="text-align: center;">
         <div class="item-name flexrow">{{localize 'itemcollection.Name'}}</div>
         <div class="item-detial">{{localize 'itemcollection.Quantity'}}</div>
         <div class="item-detail item-weight">{{localize "DND5E.Weight"}}</div>
@@ -78,7 +78,7 @@
       <ol class="items-list inventory-list">
         {{#each flags.itemcollection.contentsData as |item iid|}}
         <li class="item flexrow" data-item-id="{{item._id}}">
-          <div class="item-name flexrow">
+          <div class="item-name flexrow" style="flex-grow: 5;">
             <div class="item-image" style="background-image: url('{{item.img}}')"></div>
             <h4>
               {{#if item.isSpell}}
