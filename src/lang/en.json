@@ -1,4 +1,7 @@
 {
+    "itemcollection.ItemSheet5eWithBags" : "5e Item Sheet with Bags",
+    "itemcollection.ItemSheetShop" : "5e Item Shop Sheet",
+
     "itemcollection.goldConversion.Name": "Gold Conversion",
     "itemcollection.goldConversion.Hint": "Allow Players to conver pack contents to gold",
     "itemcollection.goldConversionPercentage.Name": "Gold Conversion Percentage",
