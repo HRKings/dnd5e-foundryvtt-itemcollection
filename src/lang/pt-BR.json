@@ -1,4 +1,7 @@
 {
+    "itemcollection.ItemSheet5eWithBags" : "Ficha de Item 5e com Bolsas",
+    "itemcollection.ItemSheetShop" : "Ficha de Loja de Item 5e",
+
     "itemcollection.goldConversion.Name": "Converter em Ouro",
     "itemcollection.goldConversion.Hint": "Permite aos jogadores converter conteudo dos conteiners em moedas de ouro",
     "itemcollection.goldConversionPercentage.Name": "Porcentagem da Conversão em Moedas de Ouro",
