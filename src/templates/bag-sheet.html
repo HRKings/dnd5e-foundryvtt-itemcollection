@@ -53,7 +53,7 @@
       </div>
 
       {{#if data.currency}}
-      <ol class="currency flexrow">
+      <ol class="currency flexrow" style="justify-content: center;">
         {{#each data.currency as |v k|}}
         <label>{{ lookup ../currencies k }}</label>
         <input type="text" name="data.currency.{{k}}" value="{{v}}" data-dtype="Number" />
@@ -61,8 +61,8 @@
       </ol>
       {{/if}}
 
-      <li class="items-header flexrow" style="text-align: center;">
-        <div class="item-name flexrow" style="flex-grow: 4;">{{localize 'itemcollection.Name'}}</div>
+      <li class="items-header" style="text-align: center; grid-template-columns: 4fr 1fr 1fr 1fr 1fr; display: grid; align-items: center;">
+        <div class="item-name" style="text-align: start;">{{localize 'itemcollection.Name'}}</div>
         <div class="item-detial">{{localize 'itemcollection.Quantity'}}</div>
         <div class="item-detail item-weight">{{localize "DND5E.Weight"}}</div>
         <div class="item-detail item-weight">{{localize "DND5E.Weight"}} (Stack)</div>
@@ -77,8 +77,8 @@
 
       <ol class="items-list inventory-list">
         {{#each flags.itemcollection.contentsData as |item iid|}}
-        <li class="item flexrow" data-item-id="{{item._id}}">
-          <div class="item-name flexrow" style="flex-grow: 5;">
+        <li class="item" data-item-id="{{item._id}}" style="display: grid; text-align: center; grid-template-columns: 4fr 1fr 1fr 1fr 1fr;">
+          <div class="item-name flexrow">
             <div class="item-image" style="background-image: url('{{item.img}}')"></div>
             <h4>
               {{#if item.isSpell}}
